@@ -23,6 +23,7 @@ class david_list(object):
     def __init__(self):
         self.name='';
         self.genes=[];
+        self.descriptions=[];
 class david_collection(object):
     def __init__(self):
         self.samples=[];
@@ -35,14 +36,19 @@ class david_collection(object):
                 temp=david_list();
                 temp.name=fname.split('.')[0];
                 print fname
-#get file name
+                #get file name
                 f=open(fname,'r');
                 line=f.readline().lower().split();
                 print line
                 idx=line.index('to');
-#find index at uniport column
+                #find index at uniport column
                 for line in f:
                     temp.genes.append(line.split()[idx]);
+                    try:
+                        temp.descriptions=[item.strip().lower() for item in line.split()[2:]]
+                    except IndexError:
+                        #in case no description
+                        pass;
                 f.close();
                 self.samples.append(temp);
         return
@@ -108,37 +114,33 @@ class crick_tester(object):
         self.exportfig(self.name+'_open_ppi');
 # a simple closed ppi network
         return
-    def open_dna(self,domain='source',depth=2):
+    def open_dna(self,domain='target'):
         # add transcription edges
         print "trying to build motifmap", self.n
         mfbuilder=MotifMapEdgeBuilder(self.n);
-        mfbuilder.build_network(upstream = 4000,
-                downstream=4000,
-                bbls=1.5,
-                exon=1,
-                fdr=0.5,
-                max_depth=depth,
+        mfbuilder.build_network(upstream = 2000,
+                downstream=2000,
+                bbls=2,
+                exon=0,
+                fdr=0.4,
                 closed_network=False,
                 search_domain=domain,
-               #cache=False,
             );
         self.cleanup();
         self.pickle()
         self.exportfig(self.name+'_open_dna_'+domain)
         return
-    def closed_dna(self,domain='source', depth=5):
+    def closed_dna(self,domain='source'):
         # add transcription edges
         print "trying to build motifmap", self.n
         mfbuilder=MotifMapEdgeBuilder(self.n);
-        mfbuilder.build_network(upstream = 20000,
-                downstream=20000,
-                bbls=0.5,
-                exon=1,
-                fdr=1,
-                max_depth=depth,
+        mfbuilder.build_network(upstream = 2000,
+                downstream=2000,
+                bbls=1.5,
+                exon=0,
+                fdr=0.5,
                 search_domain=domain,
                 closed_network=True,
-               #cache=False,
             );
         self.cleanup();
         self.pickle()
@@ -153,6 +155,13 @@ class crick_tester(object):
         self.pickle();
         self.exportfig(self.name+'_closed_pathway');
         return
+    def annotate_tissue_source(self):
+        """a very simple method for annotating\
+                which tissue the genes come from"""
+        return        
+    def annotate_tf_from_list(self):
+        """check if the gene is in a given gene list"""
+        return;
 def main():
     c=david_collection();
     c.load();
