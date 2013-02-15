@@ -1,0 +1,503 @@
+From	To	Species	Gene Name
+1452251_at	Q6P2L4	Mus musculus	neurobeachin
+1452251_at	Q9EPN1	Mus musculus	neurobeachin
+1452251_at	Q9EPN0	Mus musculus	neurobeachin
+1452251_at	Q9EPM9	Mus musculus	neurobeachin
+1452251_at	Q8C931	Mus musculus	neurobeachin
+1452251_at	Q9WVM9	Mus musculus	neurobeachin
+1438083_at	Q9WU59	Mus musculus	Hedgehog-interacting protein
+1438083_at	Q8C0B0	Mus musculus	Hedgehog-interacting protein
+1438083_at	Q7TN16	Mus musculus	Hedgehog-interacting protein
+1452380_at	Q61772	Mus musculus	Eph receptor A7
+1452380_at	Q61773	Mus musculus	Eph receptor A7
+1452380_at	Q61505	Mus musculus	Eph receptor A7
+1452380_at	Q8CCF9	Mus musculus	Eph receptor A7
+1452380_at	A2BDQ5	Mus musculus	Eph receptor A7
+1452380_at	A2BDQ4	Mus musculus	Eph receptor A7
+1452380_at	Q8R381	Mus musculus	Eph receptor A7
+1452380_at	Q8BSU8	Mus musculus	Eph receptor A7
+1452380_at	Q61774	Mus musculus	Eph receptor A7
+1452380_at	Q3V3T7	Mus musculus	Eph receptor A7
+1452380_at	Q8CC52	Mus musculus	Eph receptor A7
+1451268_at	Q8C6X6	Mus musculus	translocation associated membrane protein 1-like 1
+1451268_at	Q8QZR0	Mus musculus	translocation associated membrane protein 1-like 1
+1451268_at	Q8C455	Mus musculus	translocation associated membrane protein 1-like 1
+1451863_at	Q8VIH9	Mus musculus	urotensin 2 receptor
+1451863_at	Q05AD1	Mus musculus	urotensin 2 receptor
+1450724_at	Q3U2M0	Mus musculus	family with sequence similarity 126, member A
+1450724_at	Q3TTP7	Mus musculus	family with sequence similarity 126, member A
+1450724_at	Q6P9N1	Mus musculus	family with sequence similarity 126, member A
+1450724_at	Q99NC4	Mus musculus	family with sequence similarity 126, member A
+1460250_at	Q9CQN4	Mus musculus	sclerostin domain containing 1
+1460250_at	Q8CF09	Mus musculus	sclerostin domain containing 1
+1451153_a_at	Q6P6J7	Mus musculus	cysteine and histidine rich 1
+1451153_a_at	Q9QXA1	Mus musculus	cysteine and histidine rich 1
+1451153_a_at	Q8BI28	Mus musculus	cysteine and histidine rich 1
+1451153_a_at	Q6ZQA2	Mus musculus	cysteine and histidine rich 1
+1451153_a_at	Q9D134	Mus musculus	cysteine and histidine rich 1
+1460668_at	Q3V002	Mus musculus	galanin
+1460668_at	P47212	Mus musculus	galanin
+1456370_s_at	A2A8E4	Mus musculus	RIKEN cDNA 0610037L13 gene
+1456370_s_at	A2A8E3	Mus musculus	RIKEN cDNA 0610037L13 gene
+1456370_s_at	Q8BHG2	Mus musculus	RIKEN cDNA 0610037L13 gene
+1456370_s_at	A2A8E2	Mus musculus	RIKEN cDNA 0610037L13 gene
+1456370_s_at	A2A8E1	Mus musculus	RIKEN cDNA 0610037L13 gene
+1456370_s_at	Q9D1H2	Mus musculus	RIKEN cDNA 0610037L13 gene
+1456370_s_at	Q8C7D6	Mus musculus	RIKEN cDNA 0610037L13 gene
+1456370_s_at	Q9DCH5	Mus musculus	RIKEN cDNA 0610037L13 gene
+1456370_s_at	A2A8E5	Mus musculus	RIKEN cDNA 0610037L13 gene
+1452331_s_at	A2BIE1	Mus musculus	glutamine and serine rich 1
+1452331_s_at	Q3UR75	Mus musculus	glutamine and serine rich 1
+1452331_s_at	Q8C5D6	Mus musculus	glutamine and serine rich 1
+1452331_s_at	Q8VDM2	Mus musculus	glutamine and serine rich 1
+1460386_a_at	Q8VI14	Mus musculus	solute carrier family 1 (neuronal/epithelial high affinity glutamate transporter, system Xag), member 1
+1460386_a_at	P51906	Mus musculus	solute carrier family 1 (neuronal/epithelial high affinity glutamate transporter, system Xag), member 1
+1460386_a_at	Q9QWI2	Mus musculus	solute carrier family 1 (neuronal/epithelial high affinity glutamate transporter, system Xag), member 1
+1460386_a_at	O35875	Mus musculus	solute carrier family 1 (neuronal/epithelial high affinity glutamate transporter, system Xag), member 1
+1460386_a_at	O35869	Mus musculus	solute carrier family 1 (neuronal/epithelial high affinity glutamate transporter, system Xag), member 1
+1460386_a_at	Q9QWI1	Mus musculus	solute carrier family 1 (neuronal/epithelial high affinity glutamate transporter, system Xag), member 1
+1460386_a_at	O88946	Mus musculus	solute carrier family 1 (neuronal/epithelial high affinity glutamate transporter, system Xag), member 1
+1460386_a_at	Q6P1F7	Mus musculus	solute carrier family 1 (neuronal/epithelial high affinity glutamate transporter, system Xag), member 1
+1460386_a_at	Q9D393	Mus musculus	solute carrier family 1 (neuronal/epithelial high affinity glutamate transporter, system Xag), member 1
+1460386_a_at	Q6P1Z8	Mus musculus	solute carrier family 1 (neuronal/epithelial high affinity glutamate transporter, system Xag), member 1
+1460348_at	A2A7G6	Mus musculus	MAD2 mitotic arrest deficient-like 2 (yeast)
+1460348_at	A2A7G7	Mus musculus	MAD2 mitotic arrest deficient-like 2 (yeast)
+1460348_at	Q9D752	Mus musculus	MAD2 mitotic arrest deficient-like 2 (yeast)
+1460348_at	Q91VP1	Mus musculus	MAD2 mitotic arrest deficient-like 2 (yeast)
+1460348_at	A2A7G5	Mus musculus	MAD2 mitotic arrest deficient-like 2 (yeast)
+1460348_at	A2A7G8	Mus musculus	MAD2 mitotic arrest deficient-like 2 (yeast)
+1460348_at	Q3TMY6	Mus musculus	MAD2 mitotic arrest deficient-like 2 (yeast)
+1455918_at	P25962	Mus musculus	adrenergic receptor, beta 3
+1455918_at	Q3UP63	Mus musculus	adrenergic receptor, beta 3
+1455918_at	Q9QZ98	Mus musculus	adrenergic receptor, beta 3
+1455918_at	A2RS74	Mus musculus	adrenergic receptor, beta 3
+1448201_at	Q3UUM9	Mus musculus	secreted frizzled-related protein 2
+1448201_at	Q3UI35	Mus musculus	secreted frizzled-related protein 2
+1448201_at	P97299	Mus musculus	secreted frizzled-related protein 2
+1448201_at	O08862	Mus musculus	secreted frizzled-related protein 2
+1448201_at	O35297	Mus musculus	secreted frizzled-related protein 2
+1450412_at	Q8CFY0	Mus musculus	transducin (beta)-like 2
+1450412_at	Q9CY49	Mus musculus	transducin (beta)-like 2
+1450412_at	Q9R099	Mus musculus	transducin (beta)-like 2
+1454628_at	Q6PFE6	Mus musculus	intermediate filament family orphan 1
+1454628_at	Q8C1D6	Mus musculus	intermediate filament family orphan 1
+1454628_at	Q8BXS3	Mus musculus	intermediate filament family orphan 1
+1454628_at	Q8BXL9	Mus musculus	intermediate filament family orphan 1
+1454628_at	Q3TQI1	Mus musculus	intermediate filament family orphan 1
+1450429_at	Q80VZ1	Mus musculus	calpain 6
+1450429_at	Q3UM55	Mus musculus	calpain 6
+1450429_at	O35646	Mus musculus	calpain 6
+1451827_a_at	Q8C3M1	Mus musculus	NADPH oxidase 4
+1451827_a_at	Q3TF39	Mus musculus	NADPH oxidase 4
+1451827_a_at	Q9JHI8	Mus musculus	NADPH oxidase 4
+1451827_a_at	B5AN18	Mus musculus	NADPH oxidase 4
+1451827_a_at	B2RSM1	Mus musculus	NADPH oxidase 4
+1451827_a_at	Q8VCA3	Mus musculus	NADPH oxidase 4
+1452981_at	Q8C6A0	Mus musculus	contactin 1
+1452981_at	Q6NXV7	Mus musculus	contactin 1
+1452981_at	Q3UYF2	Mus musculus	contactin 1
+1452981_at	Q8BR42	Mus musculus	contactin 1
+1452981_at	Q6R5G9	Mus musculus	contactin 1
+1452981_at	P12960	Mus musculus	contactin 1
+1450824_at	Q5R1U4	Mus musculus	patched homolog 1
+1450824_at	Q61115	Mus musculus	patched homolog 1
+1450824_at	Q5R252	Mus musculus	patched homolog 1
+1450824_at	Q5TLE7	Mus musculus	patched homolog 1
+1450824_at	Q3TQB0	Mus musculus	patched homolog 1
+1450824_at	Q5TLE8	Mus musculus	patched homolog 1
+1450824_at	Q3TM50	Mus musculus	patched homolog 1
+1450824_at	Q3LG17	Mus musculus	patched homolog 1
+1450824_at	Q3UUD4	Mus musculus	patched homolog 1
+1451105_at	Q8C5G2	Mus musculus	vasohibin 2
+1451105_at	Q8BRA1	Mus musculus	vasohibin 2
+1451105_at	Q3TR02	Mus musculus	vasohibin 2
+1451105_at	Q8R1R8	Mus musculus	vasohibin 2
+1423477_at	Q3TWA9	Mus musculus	similar to Zic protein; zinc finger protein of the cerebellum 1
+1423477_at	Q6PAK5	Mus musculus	similar to Zic protein; zinc finger protein of the cerebellum 1
+1423477_at	Q3UR19	Mus musculus	similar to Zic protein; zinc finger protein of the cerebellum 1
+1423477_at	P46684	Mus musculus	similar to Zic protein; zinc finger protein of the cerebellum 1
+1423477_at	Q80Y18	Mus musculus	similar to Zic protein; zinc finger protein of the cerebellum 1
+1460568_at	Q6P1I9	Mus musculus	tripartite motif-containing 46
+1460568_at	Q7TNM2	Mus musculus	tripartite motif-containing 46
+1460568_at	Q60717	Mus musculus	tripartite motif-containing 46
+1460568_at	Q3TC52	Mus musculus	tripartite motif-containing 46
+1450259_a_at	Q3UZ79	Mus musculus	signal transducer and activator of transcription 5A
+1450259_a_at	Q9R0X9	Mus musculus	signal transducer and activator of transcription 5A
+1450259_a_at	Q71UV3	Mus musculus	signal transducer and activator of transcription 5A
+1450259_a_at	Q6PHA0	Mus musculus	signal transducer and activator of transcription 5A
+1450259_a_at	Q9JIA0	Mus musculus	signal transducer and activator of transcription 5A
+1450259_a_at	P42230	Mus musculus	signal transducer and activator of transcription 5A
+1450259_a_at	B2C3G8	Mus musculus	signal transducer and activator of transcription 5A
+1450259_a_at	A2A5D4	Mus musculus	signal transducer and activator of transcription 5A
+1450259_a_at	A2A5D3	Mus musculus	signal transducer and activator of transcription 5A
+1455143_at	Q5F287	Mus musculus	neuroligin 2
+1455143_at	Q6PHN2	Mus musculus	neuroligin 2
+1455143_at	Q3UVR7	Mus musculus	neuroligin 2
+1455143_at	Q5F288	Mus musculus	neuroligin 2
+1455143_at	Q69ZK9	Mus musculus	neuroligin 2
+1450773_at	Q9Z0V2	Mus musculus	potassium voltage-gated channel, Shal-related family, member 2
+1450773_at	Q8BSK3	Mus musculus	potassium voltage-gated channel, Shal-related family, member 2
+1450773_at	Q8CHB7	Mus musculus	potassium voltage-gated channel, Shal-related family, member 2
+1450773_at	Q9JJ60	Mus musculus	potassium voltage-gated channel, Shal-related family, member 2
+1427020_at	Q8C850	Mus musculus	scavenger receptor class A, member 3
+1427020_at	Q8R374	Mus musculus	scavenger receptor class A, member 3
+1427020_at	Q8C6N1	Mus musculus	scavenger receptor class A, member 3
+1460252_s_at	Q80WR2	Mus musculus	zinc finger protein 105
+1460252_s_at	O88412	Mus musculus	zinc finger protein 105
+1460252_s_at	Q3UHV1	Mus musculus	zinc finger protein 105
+1453848_s_at	Q9D0L1	Mus musculus	zinc finger, BED domain containing 3
+1453848_s_at	Q3UTC5	Mus musculus	zinc finger, BED domain containing 3
+1453848_s_at	Q3TSB2	Mus musculus	zinc finger, BED domain containing 3
+1452864_at	Q6ZPF2	Mus musculus	mediator of RNA polymerase II transcription, subunit 12 homolog (yeast)-like
+1452864_at	Q8C9E3	Mus musculus	mediator of RNA polymerase II transcription, subunit 12 homolog (yeast)-like
+1452864_at	Q8BQM9	Mus musculus	mediator of RNA polymerase II transcription, subunit 12 homolog (yeast)-like
+1452864_at	Q6ZPK9	Mus musculus	mediator of RNA polymerase II transcription, subunit 12 homolog (yeast)-like
+1455899_x_at	O35718	Mus musculus	suppressor of cytokine signaling 3
+1455899_x_at	P97803	Mus musculus	suppressor of cytokine signaling 3
+1455899_x_at	B1AQL6	Mus musculus	suppressor of cytokine signaling 3
+1455899_x_at	Q3U9J8	Mus musculus	suppressor of cytokine signaling 3
+1455899_x_at	Q3U7X5	Mus musculus	suppressor of cytokine signaling 3
+1424711_at	Q9QY22	Mus musculus	transmembrane protein 2
+1424711_at	Q6DFZ0	Mus musculus	transmembrane protein 2
+1424711_at	Q8BS93	Mus musculus	transmembrane protein 2
+1424711_at	Q8VE53	Mus musculus	transmembrane protein 2
+1424711_at	Q6ZPR7	Mus musculus	transmembrane protein 2
+1424711_at	Q5FWI3	Mus musculus	transmembrane protein 2
+1424711_at	Q3UE98	Mus musculus	transmembrane protein 2
+1424711_at	Q3UE15	Mus musculus	transmembrane protein 2
+1448919_at	Q78KD8	Mus musculus	CD302 antigen
+1448919_at	A2AW84	Mus musculus	CD302 antigen
+1448919_at	Q9D0X7	Mus musculus	CD302 antigen
+1448919_at	A2AW85	Mus musculus	CD302 antigen
+1448919_at	Q9DCG2	Mus musculus	CD302 antigen
+1450178_at	Q8BNZ8	Mus musculus	bromodomain, testis-specific
+1450178_at	Q59HJ4	Mus musculus	bromodomain, testis-specific
+1450178_at	Q91Y44	Mus musculus	bromodomain, testis-specific
+1460365_a_at	Q61358	Mus musculus	dynamin 1
+1460365_a_at	A2AN51	Mus musculus	dynamin 1
+1460365_a_at	Q61359	Mus musculus	dynamin 1
+1460365_a_at	A2AN50	Mus musculus	dynamin 1
+1460365_a_at	A2AN55	Mus musculus	dynamin 1
+1460365_a_at	A2AN54	Mus musculus	dynamin 1
+1460365_a_at	Q5DTN7	Mus musculus	dynamin 1
+1460365_a_at	P39053	Mus musculus	dynamin 1
+1460365_a_at	Q61360	Mus musculus	dynamin 1
+1460365_a_at	Q9QXX1	Mus musculus	dynamin 1
+1460365_a_at	Q3UNM1	Mus musculus	dynamin 1
+1460365_a_at	Q9CSY7	Mus musculus	dynamin 1
+1460365_a_at	Q6PDM5	Mus musculus	dynamin 1
+1460365_a_at	Q8JZZ4	Mus musculus	dynamin 1
+1449815_a_at	Q9CYZ8	Mus musculus	single-stranded DNA binding protein 2; predicted gene 12470
+1449815_a_at	Q99LX9	Mus musculus	single-stranded DNA binding protein 2; predicted gene 12470
+1449815_a_at	B1B188	Mus musculus	single-stranded DNA binding protein 2; predicted gene 12470
+1449815_a_at	Q540I3	Mus musculus	single-stranded DNA binding protein 2; predicted gene 12470
+1449815_a_at	Q8BPZ5	Mus musculus	single-stranded DNA binding protein 2; predicted gene 12470
+1449867_at	P09633	Mus musculus	homeo box C9
+1456417_at	Q08EF0	Mus musculus	zinc finger protein of the cerebellum 4
+1456417_at	Q8C8J4	Mus musculus	zinc finger protein of the cerebellum 4
+1456417_at	Q8C5L0	Mus musculus	zinc finger protein of the cerebellum 4
+1456417_at	Q8BG91	Mus musculus	zinc finger protein of the cerebellum 4
+1456417_at	Q61467	Mus musculus	zinc finger protein of the cerebellum 4
+1452792_at	Q80W18	Mus musculus	DAZ interacting protein 1
+1452792_at	Q6ZQ10	Mus musculus	DAZ interacting protein 1
+1452792_at	Q9CPS9	Mus musculus	DAZ interacting protein 1
+1452792_at	Q6PAU2	Mus musculus	DAZ interacting protein 1
+1452792_at	Q9CRK5	Mus musculus	DAZ interacting protein 1
+1452792_at	Q8C3Q2	Mus musculus	DAZ interacting protein 1
+1452792_at	Q4QQM0	Mus musculus	DAZ interacting protein 1
+1452792_at	Q3URS5	Mus musculus	DAZ interacting protein 1
+1452792_at	Q8BMD2	Mus musculus	DAZ interacting protein 1
+1454984_at	Q3UKU5	Mus musculus	leukemia inhibitory factor receptor
+1454984_at	P42703	Mus musculus	leukemia inhibitory factor receptor
+1454984_at	O35672	Mus musculus	leukemia inhibitory factor receptor
+1454984_at	Q3U234	Mus musculus	leukemia inhibitory factor receptor
+1454984_at	Q5I0Y2	Mus musculus	leukemia inhibitory factor receptor
+1452515_a_at	Q3U614	Mus musculus	xylosyltransferase II
+1452515_a_at	Q5SUY1	Mus musculus	xylosyltransferase II
+1452515_a_at	Q9EPL0	Mus musculus	xylosyltransferase II
+1452515_a_at	Q8K060	Mus musculus	xylosyltransferase II
+1452515_a_at	Q3UCI0	Mus musculus	xylosyltransferase II
+1452515_a_at	Q3TZ69	Mus musculus	xylosyltransferase II
+1454149_a_at	Q9CVZ6	Mus musculus	expressed sequence AI428898
+1455582_at	Q9QXP7	Mus musculus	C1q and tumor necrosis factor related protein 1
+1455582_at	Q8R1P2	Mus musculus	C1q and tumor necrosis factor related protein 1
+1455582_at	Q80VI9	Mus musculus	C1q and tumor necrosis factor related protein 1
+1455582_at	A2A4W1	Mus musculus	C1q and tumor necrosis factor related protein 1
+1455582_at	A2A4W2	Mus musculus	C1q and tumor necrosis factor related protein 1
+1460723_at	Q496T0	Mus musculus	melanocortin 5 receptor
+1460723_at	P41149	Mus musculus	melanocortin 5 receptor
+1450080_at	Q9D6I0	Mus musculus	CAAX box 1 homolog C (human)
+1455700_at	Q8BKY8	Mus musculus	MTERF domain containing 3
+1452284_at	Q99LN6	Mus musculus	protein tyrosine phosphatase, receptor type Z, polypeptide 1
+1452284_at	Q8C4M8	Mus musculus	protein tyrosine phosphatase, receptor type Z, polypeptide 1
+1452284_at	Q3URX0	Mus musculus	protein tyrosine phosphatase, receptor type Z, polypeptide 1
+1452284_at	Q9WUT8	Mus musculus	protein tyrosine phosphatase, receptor type Z, polypeptide 1
+1452284_at	B2RXS8	Mus musculus	protein tyrosine phosphatase, receptor type Z, polypeptide 1
+1452284_at	B9EKR1	Mus musculus	protein tyrosine phosphatase, receptor type Z, polypeptide 1
+1452284_at	Q8BJY4	Mus musculus	protein tyrosine phosphatase, receptor type Z, polypeptide 1
+1452284_at	Q810U6	Mus musculus	protein tyrosine phosphatase, receptor type Z, polypeptide 1
+1452284_at	Q3US98	Mus musculus	protein tyrosine phosphatase, receptor type Z, polypeptide 1
+1455626_at	O70154	Mus musculus	homeo box A9
+1455626_at	O70155	Mus musculus	homeo box A9
+1455626_at	P09631	Mus musculus	homeo box A9
+1451342_at	Q8K2Q8	Mus musculus	spondin 1, (f-spondin) extracellular matrix protein
+1451342_at	Q69ZZ7	Mus musculus	spondin 1, (f-spondin) extracellular matrix protein
+1451342_at	Q8VCC9	Mus musculus	spondin 1, (f-spondin) extracellular matrix protein
+1451342_at	Q3UYD7	Mus musculus	spondin 1, (f-spondin) extracellular matrix protein
+1450718_at	O88936	Mus musculus	SH2B adaptor protein 2
+1450718_at	Q9JID9	Mus musculus	SH2B adaptor protein 2
+1450718_at	Q6PG00	Mus musculus	SH2B adaptor protein 2
+1456377_x_at	Q8BGB5	Mus musculus	similar to epithelial protein lost in neoplasm; LIM domain containing 2
+1456377_x_at	B1AR88	Mus musculus	similar to epithelial protein lost in neoplasm; LIM domain containing 2
+1451191_at	P22935	Mus musculus	cellular retinoic acid binding protein II
+1427019_at	Q99LN6	Mus musculus	protein tyrosine phosphatase, receptor type Z, polypeptide 1
+1427019_at	Q8C4M8	Mus musculus	protein tyrosine phosphatase, receptor type Z, polypeptide 1
+1427019_at	Q3URX0	Mus musculus	protein tyrosine phosphatase, receptor type Z, polypeptide 1
+1427019_at	Q9WUT8	Mus musculus	protein tyrosine phosphatase, receptor type Z, polypeptide 1
+1427019_at	B2RXS8	Mus musculus	protein tyrosine phosphatase, receptor type Z, polypeptide 1
+1427019_at	B9EKR1	Mus musculus	protein tyrosine phosphatase, receptor type Z, polypeptide 1
+1427019_at	Q8BJY4	Mus musculus	protein tyrosine phosphatase, receptor type Z, polypeptide 1
+1427019_at	Q810U6	Mus musculus	protein tyrosine phosphatase, receptor type Z, polypeptide 1
+1427019_at	Q3US98	Mus musculus	protein tyrosine phosphatase, receptor type Z, polypeptide 1
+1456623_at	Q8BSH3	Mus musculus	tropomyosin 1, alpha
+1456623_at	Q564G1	Mus musculus	tropomyosin 1, alpha
+1456623_at	P99034	Mus musculus	tropomyosin 1, alpha
+1456623_at	Q545Y3	Mus musculus	tropomyosin 1, alpha
+1456623_at	P19354	Mus musculus	tropomyosin 1, alpha
+1456623_at	P02558	Mus musculus	tropomyosin 1, alpha
+1456623_at	B7ZNL3	Mus musculus	tropomyosin 1, alpha
+1456623_at	A2RRI1	Mus musculus	tropomyosin 1, alpha
+1456623_at	P58771	Mus musculus	tropomyosin 1, alpha
+1456623_at	P46902	Mus musculus	tropomyosin 1, alpha
+1456623_at	Q8BP43	Mus musculus	tropomyosin 1, alpha
+1420514_at	Q3TS34	Mus musculus	transmembrane protein 47
+1420514_at	Q9JJG6	Mus musculus	transmembrane protein 47
+1420514_at	Q3V2X1	Mus musculus	transmembrane protein 47
+1420514_at	Q3UZL4	Mus musculus	transmembrane protein 47
+1420514_at	Q8C0H5	Mus musculus	transmembrane protein 47
+1420514_at	B1AUN5	Mus musculus	transmembrane protein 47
+1460631_at	Q8BXH6	Mus musculus	O-linked N-acetylglucosamine (GlcNAc) transferase (UDP-N-acetylglucosamine:polypeptide-N-acetylglucosaminyl transferase)
+1460631_at	Q80XU6	Mus musculus	O-linked N-acetylglucosamine (GlcNAc) transferase (UDP-N-acetylglucosamine:polypeptide-N-acetylglucosaminyl transferase)
+1460631_at	Q6PG10	Mus musculus	O-linked N-acetylglucosamine (GlcNAc) transferase (UDP-N-acetylglucosamine:polypeptide-N-acetylglucosaminyl transferase)
+1460631_at	A2ALY1	Mus musculus	O-linked N-acetylglucosamine (GlcNAc) transferase (UDP-N-acetylglucosamine:polypeptide-N-acetylglucosaminyl transferase)
+1460631_at	Q8C676	Mus musculus	O-linked N-acetylglucosamine (GlcNAc) transferase (UDP-N-acetylglucosamine:polypeptide-N-acetylglucosaminyl transferase)
+1460631_at	Q8CGY8	Mus musculus	O-linked N-acetylglucosamine (GlcNAc) transferase (UDP-N-acetylglucosamine:polypeptide-N-acetylglucosaminyl transferase)
+1460631_at	Q3TQV0	Mus musculus	O-linked N-acetylglucosamine (GlcNAc) transferase (UDP-N-acetylglucosamine:polypeptide-N-acetylglucosaminyl transferase)
+1460631_at	Q91Y38	Mus musculus	O-linked N-acetylglucosamine (GlcNAc) transferase (UDP-N-acetylglucosamine:polypeptide-N-acetylglucosaminyl transferase)
+1455893_at	Q8BFU0	Mus musculus	R-spondin 2 homolog (Xenopus laevis)
+1455893_at	Q7TPX3	Mus musculus	R-spondin 2 homolog (Xenopus laevis)
+1451978_at	Q99KX3	Mus musculus	lysyl oxidase-like 1
+1451978_at	P97873	Mus musculus	lysyl oxidase-like 1
+1451978_at	Q8BP04	Mus musculus	lysyl oxidase-like 1
+1451978_at	Q4QQJ7	Mus musculus	lysyl oxidase-like 1
+1451978_at	Q91ZY4	Mus musculus	lysyl oxidase-like 1
+1451857_a_at	Q8R116	Mus musculus	notum pectinacetylesterase homolog (Drosophila)
+1451857_a_at	A2ABZ6	Mus musculus	notum pectinacetylesterase homolog (Drosophila)
+1451857_a_at	A2ABZ5	Mus musculus	notum pectinacetylesterase homolog (Drosophila)
+1428455_at	Q9WV05	Mus musculus	collagen, type XIV, alpha 1
+1428455_at	Q80X19	Mus musculus	collagen, type XIV, alpha 1
+1428455_at	B7ZNH7	Mus musculus	collagen, type XIV, alpha 1
+1428455_at	Q3UVS2	Mus musculus	collagen, type XIV, alpha 1
+1428455_at	Q8C6X3	Mus musculus	collagen, type XIV, alpha 1
+1437750_at	Q6F5E0	Mus musculus	transmembrane protein 158
+1437750_at	B2RTM1	Mus musculus	transmembrane protein 158
+1435375_at	Q3TVP5	Mus musculus	family with sequence similarity 105, member A
+1435375_at	Q80WP7	Mus musculus	family with sequence similarity 105, member A
+1435375_at	Q3U8Q4	Mus musculus	family with sequence similarity 105, member A
+1435375_at	Q3UY70	Mus musculus	family with sequence similarity 105, member A
+1450181_at	Q3UVF5	Mus musculus	cut-like homeobox 2
+1450181_at	Q3US40	Mus musculus	cut-like homeobox 2
+1450181_at	Q6P1E6	Mus musculus	cut-like homeobox 2
+1450181_at	P70298	Mus musculus	cut-like homeobox 2
+1454704_at	Q3TCS7	Mus musculus	scavenger receptor class B, member 2
+1454704_at	O35114	Mus musculus	scavenger receptor class B, member 2
+1454704_at	Q3UNF8	Mus musculus	scavenger receptor class B, member 2
+1451959_a_at	Q00731	Mus musculus	vascular endothelial growth factor A
+1451959_a_at	Q6YLN3	Mus musculus	vascular endothelial growth factor A
+1451959_a_at	Q6WZL9	Mus musculus	vascular endothelial growth factor A
+1451959_a_at	Q66S31	Mus musculus	vascular endothelial growth factor A
+1451959_a_at	Q6GT23	Mus musculus	vascular endothelial growth factor A
+1451959_a_at	Q80UA0	Mus musculus	vascular endothelial growth factor A
+1451959_a_at	Q5UD54	Mus musculus	vascular endothelial growth factor A
+1451959_a_at	O70123	Mus musculus	vascular endothelial growth factor A
+1451959_a_at	A0FKR4	Mus musculus	vascular endothelial growth factor A
+1450098_at	Q9DCU9	Mus musculus	N-acetylneuraminate pyruvate lyase 2 (putative)
+1450098_at	Q91W74	Mus musculus	N-acetylneuraminate pyruvate lyase 2 (putative)
+1450098_at	Q9CY60	Mus musculus	N-acetylneuraminate pyruvate lyase 2 (putative)
+1451520_at	Q8BZ63	Mus musculus	spastic paraplegia 20, spartin (Troyer syndrome) homolog (human)
+1451520_at	Q8BJD3	Mus musculus	spastic paraplegia 20, spartin (Troyer syndrome) homolog (human)
+1451520_at	Q3TVW1	Mus musculus	spastic paraplegia 20, spartin (Troyer syndrome) homolog (human)
+1451520_at	Q8R1X6	Mus musculus	spastic paraplegia 20, spartin (Troyer syndrome) homolog (human)
+1451520_at	Q8BM37	Mus musculus	spastic paraplegia 20, spartin (Troyer syndrome) homolog (human)
+1451520_at	Q6ZQ87	Mus musculus	spastic paraplegia 20, spartin (Troyer syndrome) homolog (human)
+1426640_s_at	Q8K017	Mus musculus	tribbles homolog 2 (Drosophila)
+1426640_s_at	Q8R2V8	Mus musculus	tribbles homolog 2 (Drosophila)
+1426640_s_at	Q8K4K3	Mus musculus	tribbles homolog 2 (Drosophila)
+1460716_a_at	Q3UYR3	Mus musculus	core binding factor beta
+1460716_a_at	Q8C282	Mus musculus	core binding factor beta
+1460716_a_at	Q08024	Mus musculus	core binding factor beta
+1460716_a_at	Q08025	Mus musculus	core binding factor beta
+1460716_a_at	Q8CGD5	Mus musculus	core binding factor beta
+1460716_a_at	Q62050	Mus musculus	core binding factor beta
+1460716_a_at	Q62051	Mus musculus	core binding factor beta
+1460187_at	Q8R1J4	Mus musculus	secreted frizzled-related protein 1
+1460187_at	Q8C4U3	Mus musculus	secreted frizzled-related protein 1
+1460187_at	Q505A2	Mus musculus	secreted frizzled-related protein 1
+1460187_at	O08861	Mus musculus	secreted frizzled-related protein 1
+1452399_at	Q8BRK0	Mus musculus	regulator of G-protein signaling 6
+1452399_at	Q8BGI8	Mus musculus	regulator of G-protein signaling 6
+1452399_at	Q9Z2H2	Mus musculus	regulator of G-protein signaling 6
+1452399_at	Q08AT5	Mus musculus	regulator of G-protein signaling 6
+1452399_at	Q3UTM5	Mus musculus	regulator of G-protein signaling 6
+1451204_at	Q91WD6	Mus musculus	scavenger receptor class A, member 5 (putative)
+1451204_at	Q8R330	Mus musculus	scavenger receptor class A, member 5 (putative)
+1451204_at	Q9D4G8	Mus musculus	scavenger receptor class A, member 5 (putative)
+1451204_at	Q8K299	Mus musculus	scavenger receptor class A, member 5 (putative)
+1451204_at	Q8BZZ2	Mus musculus	scavenger receptor class A, member 5 (putative)
+1451204_at	Q9CUC3	Mus musculus	scavenger receptor class A, member 5 (putative)
+1456733_x_at	Q8BV87	Mus musculus	serine (or cysteine) peptidase inhibitor, clade H, member 1
+1456733_x_at	Q5U4D0	Mus musculus	serine (or cysteine) peptidase inhibitor, clade H, member 1
+1456733_x_at	P19324	Mus musculus	serine (or cysteine) peptidase inhibitor, clade H, member 1
+1456733_x_at	Q8BVU9	Mus musculus	serine (or cysteine) peptidase inhibitor, clade H, member 1
+1456733_x_at	Q3TJK3	Mus musculus	serine (or cysteine) peptidase inhibitor, clade H, member 1
+1456733_x_at	Q3TMD2	Mus musculus	serine (or cysteine) peptidase inhibitor, clade H, member 1
+1456733_x_at	Q3TWG9	Mus musculus	serine (or cysteine) peptidase inhibitor, clade H, member 1
+1456262_at	Q99KV9	Mus musculus	RNA binding motif protein 5
+1456262_at	Q3UZ84	Mus musculus	RNA binding motif protein 5
+1456262_at	Q91YE7	Mus musculus	RNA binding motif protein 5
+1456262_at	Q3UZ19	Mus musculus	RNA binding motif protein 5
+1456262_at	Q05CY7	Mus musculus	RNA binding motif protein 5
+1460285_at	B8JK39	Mus musculus	integrin alpha 9
+1460285_at	Q80V97	Mus musculus	integrin alpha 9
+1460285_at	Q8BJG9	Mus musculus	integrin alpha 9
+1460285_at	Q91YD5	Mus musculus	integrin alpha 9
+1460285_at	Q3UT74	Mus musculus	integrin alpha 9
+1452652_at	Q6F5E0	Mus musculus	transmembrane protein 158
+1452652_at	B2RTM1	Mus musculus	transmembrane protein 158
+1451289_at	Q6P207	Mus musculus	doublecortin-like kinase 1
+1451289_at	Q9JLM7	Mus musculus	doublecortin-like kinase 1
+1451289_at	Q9JLM8	Mus musculus	doublecortin-like kinase 1
+1451289_at	Q8BQN2	Mus musculus	doublecortin-like kinase 1
+1451289_at	Q9JLM6	Mus musculus	doublecortin-like kinase 1
+1451289_at	Q8BRN4	Mus musculus	doublecortin-like kinase 1
+1451289_at	A3KN70	Mus musculus	doublecortin-like kinase 1
+1451289_at	A8IP62	Mus musculus	doublecortin-like kinase 1
+1451289_at	Q8CCN4	Mus musculus	doublecortin-like kinase 1
+1451289_at	Q80VB6	Mus musculus	doublecortin-like kinase 1
+1451289_at	Q3UGP0	Mus musculus	doublecortin-like kinase 1
+1451289_at	Q8VDT3	Mus musculus	doublecortin-like kinase 1
+1451289_at	Q1EDH1	Mus musculus	doublecortin-like kinase 1
+1451289_at	Q8CHG1	Mus musculus	doublecortin-like kinase 1
+1422938_at	Q4VBF6	Mus musculus	predicted gene 3655; B-cell leukemia/lymphoma 2
+1422938_at	Q6NTH7	Mus musculus	predicted gene 3655; B-cell leukemia/lymphoma 2
+1422938_at	P10418	Mus musculus	predicted gene 3655; B-cell leukemia/lymphoma 2
+1422938_at	P10417	Mus musculus	predicted gene 3655; B-cell leukemia/lymphoma 2
+1422938_at	Q8BQK4	Mus musculus	predicted gene 3655; B-cell leukemia/lymphoma 2
+1456386_at	Q0VGU9	Mus musculus	RNA binding motif protein 39
+1456386_at	Q3UXT6	Mus musculus	RNA binding motif protein 39
+1456386_at	Q3TJP1	Mus musculus	RNA binding motif protein 39
+1456386_at	Q99KV0	Mus musculus	RNA binding motif protein 39
+1456386_at	Q5RJI0	Mus musculus	RNA binding motif protein 39
+1456386_at	Q8VH51	Mus musculus	RNA binding motif protein 39
+1456386_at	Q3U313	Mus musculus	RNA binding motif protein 39
+1456386_at	A6QRH4	Mus musculus	RNA binding motif protein 39
+1456386_at	Q3UZ51	Mus musculus	RNA binding motif protein 39
+1454959_s_at	B2RSH2	Mus musculus	guanine nucleotide binding protein (G protein), alpha inhibiting 1
+1454959_s_at	Q61018	Mus musculus	guanine nucleotide binding protein (G protein), alpha inhibiting 1
+1453724_a_at	O70629	Mus musculus	serine (or cysteine) peptidase inhibitor, clade F, member 1
+1453724_a_at	O88691	Mus musculus	serine (or cysteine) peptidase inhibitor, clade F, member 1
+1453724_a_at	Q5ND38	Mus musculus	serine (or cysteine) peptidase inhibitor, clade F, member 1
+1453724_a_at	Q5ND37	Mus musculus	serine (or cysteine) peptidase inhibitor, clade F, member 1
+1453724_a_at	P97298	Mus musculus	serine (or cysteine) peptidase inhibitor, clade F, member 1
+1460436_at	Q8BZE5	Mus musculus	N-deacetylase/N-sulfotransferase (heparan glucosaminyl) 1
+1460436_at	Q3TBX3	Mus musculus	N-deacetylase/N-sulfotransferase (heparan glucosaminyl) 1
+1460436_at	Q3TDS3	Mus musculus	N-deacetylase/N-sulfotransferase (heparan glucosaminyl) 1
+1460436_at	O70353	Mus musculus	N-deacetylase/N-sulfotransferase (heparan glucosaminyl) 1
+1460436_at	Q9R206	Mus musculus	N-deacetylase/N-sulfotransferase (heparan glucosaminyl) 1
+1460436_at	Q3UHN9	Mus musculus	N-deacetylase/N-sulfotransferase (heparan glucosaminyl) 1
+1454890_at	Q6PFB8	Mus musculus	angiomotin
+1454890_at	Q6ZPZ1	Mus musculus	angiomotin
+1454890_at	Q8VHG2	Mus musculus	angiomotin
+1454890_at	A2AMK0	Mus musculus	angiomotin
+1454890_at	A2AMJ9	Mus musculus	angiomotin
+1451577_at	Q8CAI3	Mus musculus	zinc finger and BTB domain containing 20
+1451577_at	Q9QZ87	Mus musculus	zinc finger and BTB domain containing 20
+1451577_at	A6X916	Mus musculus	zinc finger and BTB domain containing 20
+1451577_at	Q9QZF3	Mus musculus	zinc finger and BTB domain containing 20
+1451577_at	Q9DBD4	Mus musculus	zinc finger and BTB domain containing 20
+1451577_at	Q8K0L9	Mus musculus	zinc finger and BTB domain containing 20
+1459211_at	Q8BKI7	Mus musculus	GLI-Kruppel family member GLI2
+1459211_at	Q8K0K3	Mus musculus	GLI-Kruppel family member GLI2
+1459211_at	Q0VGV1	Mus musculus	GLI-Kruppel family member GLI2
+1459211_at	A5AA25	Mus musculus	GLI-Kruppel family member GLI2
+1459211_at	A5AA27	Mus musculus	GLI-Kruppel family member GLI2
+1459211_at	A5AA26	Mus musculus	GLI-Kruppel family member GLI2
+1459211_at	Q0VGT2	Mus musculus	GLI-Kruppel family member GLI2
+1459211_at	A5A9W4	Mus musculus	GLI-Kruppel family member GLI2
+1459211_at	A5A9W3	Mus musculus	GLI-Kruppel family member GLI2
+1459211_at	A5A9W5	Mus musculus	GLI-Kruppel family member GLI2
+1452412_at	Q8BQA3	Mus musculus	homeo box C8
+1452412_at	Q8BNX6	Mus musculus	homeo box C8
+1452412_at	P09025	Mus musculus	homeo box C8
+1452412_at	Q8BNV9	Mus musculus	homeo box C8
+1453924_a_at	P43117	Mus musculus	prostaglandin F receptor
+1453924_a_at	Q60I90	Mus musculus	prostaglandin F receptor
+1453924_a_at	Q9D627	Mus musculus	prostaglandin F receptor
+1453924_a_at	Q8BNT7	Mus musculus	prostaglandin F receptor
+1455363_at	Q14BI4	Mus musculus	brain-specific angiogenesis inhibitor 1; similar to brain-specific angiogenesis inhibitor 1
+1455363_at	Q3UH36	Mus musculus	brain-specific angiogenesis inhibitor 1; similar to brain-specific angiogenesis inhibitor 1
+1455363_at	Q8BL11	Mus musculus	brain-specific angiogenesis inhibitor 1; similar to brain-specific angiogenesis inhibitor 1
+1455363_at	Q5DTN9	Mus musculus	brain-specific angiogenesis inhibitor 1; similar to brain-specific angiogenesis inhibitor 1
+1455363_at	Q3UHD1	Mus musculus	brain-specific angiogenesis inhibitor 1; similar to brain-specific angiogenesis inhibitor 1
+1455363_at	Q6PB68	Mus musculus	brain-specific angiogenesis inhibitor 1; similar to brain-specific angiogenesis inhibitor 1
+1455363_at	Q8CGM0	Mus musculus	brain-specific angiogenesis inhibitor 1; similar to brain-specific angiogenesis inhibitor 1
+1451653_a_at	Q8QZV6	Mus musculus	family with sequence similarity 161, member A
+1451653_a_at	B1AVK0	Mus musculus	family with sequence similarity 161, member A
+1451653_a_at	Q3V043	Mus musculus	family with sequence similarity 161, member A
+1451653_a_at	Q9CUP0	Mus musculus	family with sequence similarity 161, member A
+1452482_at	Q8K317	Mus musculus	v-erb-b2 erythroblastic leukemia viral oncogene homolog 3 (avian)
+1452482_at	Q810U8	Mus musculus	v-erb-b2 erythroblastic leukemia viral oncogene homolog 3 (avian)
+1452482_at	O88458	Mus musculus	v-erb-b2 erythroblastic leukemia viral oncogene homolog 3 (avian)
+1452482_at	Q68J64	Mus musculus	v-erb-b2 erythroblastic leukemia viral oncogene homolog 3 (avian)
+1452482_at	Q61526	Mus musculus	v-erb-b2 erythroblastic leukemia viral oncogene homolog 3 (avian)
+1452482_at	Q3KQR1	Mus musculus	v-erb-b2 erythroblastic leukemia viral oncogene homolog 3 (avian)
+1454803_a_at	Q91WA3	Mus musculus	histone deacetylase 11
+1454803_a_at	Q543U1	Mus musculus	histone deacetylase 11
+1455826_a_at	Q8BQY4	Mus musculus	beta-site APP cleaving enzyme 1
+1455826_a_at	Q9CUU5	Mus musculus	beta-site APP cleaving enzyme 1
+1455826_a_at	Q8C7R1	Mus musculus	beta-site APP cleaving enzyme 1
+1455826_a_at	Q8C4F4	Mus musculus	beta-site APP cleaving enzyme 1
+1455826_a_at	Q69ZQ6	Mus musculus	beta-site APP cleaving enzyme 1
+1455826_a_at	Q544D0	Mus musculus	beta-site APP cleaving enzyme 1
+1455826_a_at	P56818	Mus musculus	beta-site APP cleaving enzyme 1
+1422952_at	B2RWH1	Mus musculus	Ng23 protein
+1422952_at	Q9Z1Q7	Mus musculus	Ng23 protein
+1422952_at	Q9CY86	Mus musculus	Ng23 protein
+1451991_at	Q61772	Mus musculus	Eph receptor A7
+1451991_at	Q61773	Mus musculus	Eph receptor A7
+1451991_at	Q61505	Mus musculus	Eph receptor A7
+1451991_at	Q8CCF9	Mus musculus	Eph receptor A7
+1451991_at	A2BDQ5	Mus musculus	Eph receptor A7
+1451991_at	A2BDQ4	Mus musculus	Eph receptor A7
+1451991_at	Q8R381	Mus musculus	Eph receptor A7
+1451991_at	Q8BSU8	Mus musculus	Eph receptor A7
+1451991_at	Q61774	Mus musculus	Eph receptor A7
+1451991_at	Q3V3T7	Mus musculus	Eph receptor A7
+1451991_at	Q8CC52	Mus musculus	Eph receptor A7
+1456573_x_at	Q922E1	Mus musculus	nicotinamide nucleotide transhydrogenase
+1456573_x_at	Q3TGH1	Mus musculus	nicotinamide nucleotide transhydrogenase
+1456573_x_at	Q3TWH2	Mus musculus	nicotinamide nucleotide transhydrogenase
+1456573_x_at	Q9JK70	Mus musculus	nicotinamide nucleotide transhydrogenase
+1456573_x_at	Q8C9V5	Mus musculus	nicotinamide nucleotide transhydrogenase
+1456573_x_at	Q8C1W8	Mus musculus	nicotinamide nucleotide transhydrogenase
+1456573_x_at	Q8BGK0	Mus musculus	nicotinamide nucleotide transhydrogenase
+1456573_x_at	Q8C3H2	Mus musculus	nicotinamide nucleotide transhydrogenase
+1456573_x_at	Q8C337	Mus musculus	nicotinamide nucleotide transhydrogenase
+1456573_x_at	Q61941	Mus musculus	nicotinamide nucleotide transhydrogenase
+1454838_s_at	Q3UZD3	Mus musculus	protein kinase domain containing, cytoplasmic
+1454838_s_at	Q8VBZ6	Mus musculus	protein kinase domain containing, cytoplasmic
+1454838_s_at	B6F136	Mus musculus	protein kinase domain containing, cytoplasmic
+1454838_s_at	Q5RJI4	Mus musculus	protein kinase domain containing, cytoplasmic
+1452660_s_at	Q8K2Z1	Mus musculus	kelch-like 7 (Drosophila)
+1452660_s_at	Q8BUL5	Mus musculus	kelch-like 7 (Drosophila)
+1452660_s_at	Q9CZP4	Mus musculus	kelch-like 7 (Drosophila)

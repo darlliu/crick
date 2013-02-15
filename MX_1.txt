@@ -1,0 +1,187 @@
+From	To	Species	Gene Name
+1435110_at	Q3UH38	Mus musculus	unc-5 homolog B (C. elegans)
+1435110_at	Q3U4F2	Mus musculus	unc-5 homolog B (C. elegans)
+1435110_at	Q9D398	Mus musculus	unc-5 homolog B (C. elegans)
+1435110_at	Q8K1S3	Mus musculus	unc-5 homolog B (C. elegans)
+1435110_at	Q3TCV5	Mus musculus	unc-5 homolog B (C. elegans)
+1435110_at	Q3TYW6	Mus musculus	unc-5 homolog B (C. elegans)
+1435110_at	Q80Y85	Mus musculus	unc-5 homolog B (C. elegans)
+1435110_at	Q6PFH0	Mus musculus	unc-5 homolog B (C. elegans)
+1452662_a_at	Q6ZWX6	Mus musculus	similar to Eukaryotic translation initiation factor 2 subunit 1 (Eukaryotic translation initiation factor 2 alpha subunit) (eIF-2-alpha) (EIF-2alpha) (EIF-2A); eukaryotic translation initiation factor 2, subunit 1 alpha; predicted gene 7459
+1452662_a_at	Q3TIQ0	Mus musculus	similar to Eukaryotic translation initiation factor 2 subunit 1 (Eukaryotic translation initiation factor 2 alpha subunit) (eIF-2-alpha) (EIF-2alpha) (EIF-2A); eukaryotic translation initiation factor 2, subunit 1 alpha; predicted gene 7459
+1452662_a_at	Q9CV24	Mus musculus	similar to Eukaryotic translation initiation factor 2 subunit 1 (Eukaryotic translation initiation factor 2 alpha subunit) (eIF-2-alpha) (EIF-2alpha) (EIF-2A); eukaryotic translation initiation factor 2, subunit 1 alpha; predicted gene 7459
+1450475_at	Q9QWH3	Mus musculus	distal-less homeobox 3
+1450475_at	Q78ZZ8	Mus musculus	distal-less homeobox 3
+1450475_at	Q64205	Mus musculus	distal-less homeobox 3
+1429574_at	Q9D7P7	Mus musculus	chloride intracellular channel 3
+1429574_at	A2AJ28	Mus musculus	chloride intracellular channel 3
+1429574_at	Q6P912	Mus musculus	chloride intracellular channel 3
+1429574_at	A2AJ27	Mus musculus	chloride intracellular channel 3
+1451531_at	Q8K399	Mus musculus	COBW domain containing 1
+1451531_at	Q8VEH6	Mus musculus	COBW domain containing 1
+1451531_at	Q7TSA8	Mus musculus	COBW domain containing 1
+1451531_at	Q3V2Y3	Mus musculus	COBW domain containing 1
+1452298_a_at	Q811F6	Mus musculus	myosin VB
+1452298_a_at	Q148A3	Mus musculus	myosin VB
+1452298_a_at	Q69ZR6	Mus musculus	myosin VB
+1452298_a_at	Q91X59	Mus musculus	myosin VB
+1452298_a_at	Q6PER8	Mus musculus	myosin VB
+1452298_a_at	P21271	Mus musculus	myosin VB
+1450735_at	Q9CPS7	Mus musculus	partner of NOB1 homolog (S. cerevisiae)
+1449937_at	Q01084	Mus musculus	placental protein 11 related
+1449937_at	Q3V188	Mus musculus	placental protein 11 related
+1454639_x_at	P28751	Mus musculus	ribosomal protein L41; predicted gene 3699
+1454639_x_at	A6H625	Mus musculus	ribosomal protein L41; predicted gene 3699
+1454639_x_at	P62947	Mus musculus	ribosomal protein L41; predicted gene 3699
+1454639_x_at	Q3UCJ7	Mus musculus	ribosomal protein L41; predicted gene 3699
+1450532_at	Q9D7M7	Mus musculus	RIKEN cDNA 2310002J15 gene
+1450532_at	Q9D1E4	Mus musculus	RIKEN cDNA 2310002J15 gene
+1460185_at	B2RTF5	Mus musculus	keratin 83; hypothetical protein LOC100044179
+1460185_at	Q6IMF0	Mus musculus	keratin 83; hypothetical protein LOC100044179
+1449855_s_at	Q8BWQ9	Mus musculus	ubiquitin carboxyl-terminal esterase L3 (ubiquitin thiolesterase)
+1449855_s_at	Q9EQX7	Mus musculus	ubiquitin carboxyl-terminal esterase L3 (ubiquitin thiolesterase)
+1449855_s_at	Q9JKB1	Mus musculus	ubiquitin carboxyl-terminal esterase L3 (ubiquitin thiolesterase)
+1452257_at	Q8R0C8	Mus musculus	3-hydroxybutyrate dehydrogenase, type 1
+1452257_at	Q80XN0	Mus musculus	3-hydroxybutyrate dehydrogenase, type 1
+1452257_at	Q8BK53	Mus musculus	3-hydroxybutyrate dehydrogenase, type 1
+1452257_at	Q3UJS9	Mus musculus	3-hydroxybutyrate dehydrogenase, type 1
+1452257_at	A1E283	Mus musculus	3-hydroxybutyrate dehydrogenase, type 1
+1452257_at	Q3UL45	Mus musculus	3-hydroxybutyrate dehydrogenase, type 1
+1454240_at	Q3UUW2	Mus musculus	nuclear factor, erythroid derived 2, like 3
+1454240_at	Q9D3M5	Mus musculus	nuclear factor, erythroid derived 2, like 3
+1454240_at	Q3UZC1	Mus musculus	nuclear factor, erythroid derived 2, like 3
+1454240_at	Q9D246	Mus musculus	nuclear factor, erythroid derived 2, like 3
+1454240_at	Q9WTM4	Mus musculus	nuclear factor, erythroid derived 2, like 3
+1454240_at	Q3UVS3	Mus musculus	nuclear factor, erythroid derived 2, like 3
+1454240_at	Q3U5G2	Mus musculus	nuclear factor, erythroid derived 2, like 3
+1449873_at	A3KFU3	Mus musculus	bone morphogenetic protein 8a
+1449873_at	Q76F77	Mus musculus	bone morphogenetic protein 8a
+1449873_at	Q80VZ0	Mus musculus	bone morphogenetic protein 8a
+1449873_at	Q3TZB2	Mus musculus	bone morphogenetic protein 8a
+1449873_at	P34821	Mus musculus	bone morphogenetic protein 8a
+1450997_at	Q8BLV9	Mus musculus	serine/threonine kinase 17b (apoptosis-inducing)
+1450997_at	Q923E7	Mus musculus	serine/threonine kinase 17b (apoptosis-inducing)
+1450997_at	Q8BG48	Mus musculus	serine/threonine kinase 17b (apoptosis-inducing)
+1450997_at	Q3TNG7	Mus musculus	serine/threonine kinase 17b (apoptosis-inducing)
+1451690_a_at	Q9DBP8	Mus musculus	poliovirus receptor-related 4
+1451690_a_at	Q8CED8	Mus musculus	poliovirus receptor-related 4
+1451690_a_at	Q8R007	Mus musculus	poliovirus receptor-related 4
+1451690_a_at	Q3U318	Mus musculus	poliovirus receptor-related 4
+1454048_a_at	Q8CAX0	Mus musculus	RIKEN cDNA 4931408A02 gene; similar to Protein C21orf63 homolog precursor
+1454048_a_at	P58659	Mus musculus	RIKEN cDNA 4931408A02 gene; similar to Protein C21orf63 homolog precursor
+1454048_a_at	B2RXT2	Mus musculus	RIKEN cDNA 4931408A02 gene; similar to Protein C21orf63 homolog precursor
+1454048_a_at	A2RSZ2	Mus musculus	RIKEN cDNA 4931408A02 gene; similar to Protein C21orf63 homolog precursor
+1454048_a_at	Q9D4L3	Mus musculus	RIKEN cDNA 4931408A02 gene; similar to Protein C21orf63 homolog precursor
+1454048_a_at	Q497W3	Mus musculus	RIKEN cDNA 4931408A02 gene; similar to Protein C21orf63 homolog precursor
+1451422_at	Q5QD56	Mus musculus	myosin XVIIIA
+1451422_at	Q3UH48	Mus musculus	myosin XVIIIA
+1451422_at	Q5SYN8	Mus musculus	myosin XVIIIA
+1451422_at	Q5SYN9	Mus musculus	myosin XVIIIA
+1451422_at	Q3UIM4	Mus musculus	myosin XVIIIA
+1451422_at	Q3UV60	Mus musculus	myosin XVIIIA
+1451422_at	Q811D7	Mus musculus	myosin XVIIIA
+1451422_at	B2RRE2	Mus musculus	myosin XVIIIA
+1451422_at	Q5QD55	Mus musculus	myosin XVIIIA
+1451422_at	Q5QD54	Mus musculus	myosin XVIIIA
+1451422_at	Q3TBB2	Mus musculus	myosin XVIIIA
+1451422_at	Q6PER1	Mus musculus	myosin XVIIIA
+1451422_at	Q9JMH9	Mus musculus	myosin XVIIIA
+1451422_at	Q5SYP1	Mus musculus	myosin XVIIIA
+1451422_at	Q5SYP0	Mus musculus	myosin XVIIIA
+1451416_a_at	Q9JLF6	Mus musculus	transglutaminase 1, K polypeptide
+1451416_a_at	Q8R0T9	Mus musculus	transglutaminase 1, K polypeptide
+1456014_s_at	Q6NXZ9	Mus musculus	fermitin family homolog 3 (Drosophila)
+1456014_s_at	Q8K1B8	Mus musculus	fermitin family homolog 3 (Drosophila)
+1456014_s_at	Q3TEE6	Mus musculus	fermitin family homolog 3 (Drosophila)
+1450645_at	Q499L1	Mus musculus	metallothionein 4
+1450645_at	Q3V2E2	Mus musculus	metallothionein 4
+1450645_at	Q2M2R0	Mus musculus	metallothionein 4
+1450645_at	P47945	Mus musculus	metallothionein 4
+1452734_at	Q9CVC3	Mus musculus	ribonuclease T2B; ribonuclease T2A
+1452734_at	Q9CQ01	Mus musculus	ribonuclease T2B; ribonuclease T2A
+1452734_at	Q5FWA0	Mus musculus	ribonuclease T2B; ribonuclease T2A
+1452734_at	Q3TZ24	Mus musculus	ribonuclease T2B; ribonuclease T2A
+1452734_at	Q9D505	Mus musculus	ribonuclease T2B; ribonuclease T2A
+1449559_at	Q63856	Mus musculus	similar to homeobox protein; homeobox, msh-like 2
+1449559_at	Q03358	Mus musculus	similar to homeobox protein; homeobox, msh-like 2
+1449559_at	Q3UZH5	Mus musculus	similar to homeobox protein; homeobox, msh-like 2
+1455976_x_at	Q3ULV8	Mus musculus	diazepam binding inhibitor
+1455976_x_at	P31786	Mus musculus	diazepam binding inhibitor
+1455976_x_at	Q548W7	Mus musculus	diazepam binding inhibitor
+1455976_x_at	Q4VWZ5	Mus musculus	diazepam binding inhibitor
+1454640_at	B1AXC9	Mus musculus	coiled-coil-helix-coiled-coil-helix domain containing 7
+1454640_at	Q8K2Q5	Mus musculus	coiled-coil-helix-coiled-coil-helix domain containing 7
+1454640_at	Q3TFT3	Mus musculus	coiled-coil-helix-coiled-coil-helix domain containing 7
+1454640_at	Q3TGP4	Mus musculus	coiled-coil-helix-coiled-coil-helix domain containing 7
+1454640_at	Q8BT77	Mus musculus	coiled-coil-helix-coiled-coil-helix domain containing 7
+1453614_a_at	Q3UUW2	Mus musculus	nuclear factor, erythroid derived 2, like 3
+1453614_a_at	Q9D3M5	Mus musculus	nuclear factor, erythroid derived 2, like 3
+1453614_a_at	Q3UZC1	Mus musculus	nuclear factor, erythroid derived 2, like 3
+1453614_a_at	Q9D246	Mus musculus	nuclear factor, erythroid derived 2, like 3
+1453614_a_at	Q9WTM4	Mus musculus	nuclear factor, erythroid derived 2, like 3
+1453614_a_at	Q3UVS3	Mus musculus	nuclear factor, erythroid derived 2, like 3
+1453614_a_at	Q3U5G2	Mus musculus	nuclear factor, erythroid derived 2, like 3
+1452730_at	Q3V1Z5	Mus musculus	predicted gene 6816; ribosomal protein S4, Y-linked 2
+1451021_a_at	Q923C0	Mus musculus	Kruppel-like factor 5
+1451021_a_at	Q9JMI2	Mus musculus	Kruppel-like factor 5
+1451021_a_at	Q9Z0Z7	Mus musculus	Kruppel-like factor 5
+1451141_at	Q6PEN9	Mus musculus	methyltransferase like 8
+1451141_at	Q4FCS0	Mus musculus	methyltransferase like 8
+1451141_at	Q8C994	Mus musculus	methyltransferase like 8
+1451141_at	Q4FCR9	Mus musculus	methyltransferase like 8
+1451141_at	A2AUU0	Mus musculus	methyltransferase like 8
+1451141_at	Q99KI7	Mus musculus	methyltransferase like 8
+1451141_at	Q8CA70	Mus musculus	methyltransferase like 8
+1451141_at	A2AUU3	Mus musculus	methyltransferase like 8
+1451141_at	Q2XV36	Mus musculus	methyltransferase like 8
+1451141_at	Q2XV35	Mus musculus	methyltransferase like 8
+1449968_s_at	Q9WTJ0	Mus musculus	acyl-CoA thioesterase 9
+1449968_s_at	Q9R0X4	Mus musculus	acyl-CoA thioesterase 9
+1449968_s_at	Q9WUZ8	Mus musculus	acyl-CoA thioesterase 9
+1449968_s_at	Q545G7	Mus musculus	acyl-CoA thioesterase 9
+1451546_s_at	Q8VCR5	Mus musculus	transmembrane protein 40
+1451546_s_at	Q4FJU9	Mus musculus	transmembrane protein 40
+1451546_s_at	Q8C5D2	Mus musculus	transmembrane protein 40
+1452138_a_at	Q99N70	Mus musculus	angiotensin I converting enzyme (peptidyl-dipeptidase A) 2
+1452138_a_at	Q99N71	Mus musculus	angiotensin I converting enzyme (peptidyl-dipeptidase A) 2
+1452138_a_at	Q3UXR1	Mus musculus	angiotensin I converting enzyme (peptidyl-dipeptidase A) 2
+1452138_a_at	Q8R0I0	Mus musculus	angiotensin I converting enzyme (peptidyl-dipeptidase A) 2
+1452138_a_at	Q9D836	Mus musculus	angiotensin I converting enzyme (peptidyl-dipeptidase A) 2
+1452138_a_at	Q3URC9	Mus musculus	angiotensin I converting enzyme (peptidyl-dipeptidase A) 2
+1450860_at	Q4FK15	Mus musculus	leucine aminopeptidase 3
+1450860_at	Q4FJV1	Mus musculus	leucine aminopeptidase 3
+1450860_at	Q9CWN8	Mus musculus	leucine aminopeptidase 3
+1450860_at	Q3TFS5	Mus musculus	leucine aminopeptidase 3
+1450860_at	Q9CPY7	Mus musculus	leucine aminopeptidase 3
+1450860_at	Q99P44	Mus musculus	leucine aminopeptidase 3
+1456012_x_at	Q9CVC3	Mus musculus	ribonuclease T2B; ribonuclease T2A
+1456012_x_at	Q9CQ01	Mus musculus	ribonuclease T2B; ribonuclease T2A
+1456012_x_at	Q5FWA0	Mus musculus	ribonuclease T2B; ribonuclease T2A
+1456012_x_at	Q3TZ24	Mus musculus	ribonuclease T2B; ribonuclease T2A
+1456012_x_at	Q9D505	Mus musculus	ribonuclease T2B; ribonuclease T2A
+1451262_a_at	Q8R010	Mus musculus	aminoacyl tRNA synthetase complex-interacting multifunctional protein 2
+1451262_a_at	Q8R2Y6	Mus musculus	aminoacyl tRNA synthetase complex-interacting multifunctional protein 2
+1451262_a_at	Q8R3V2	Mus musculus	aminoacyl tRNA synthetase complex-interacting multifunctional protein 2
+1448457_at	Q9R0H5	Mus musculus	keratin 71
+1448457_at	Q9D0X6	Mus musculus	keratin 71
+1448457_at	Q7TPF3	Mus musculus	keratin 71
+1448457_at	A0JLW9	Mus musculus	keratin 71
+1438094_x_at	Q3TW21	Mus musculus	Obg-like ATPase 1
+1438094_x_at	B1AYK0	Mus musculus	Obg-like ATPase 1
+1438094_x_at	Q9CYC9	Mus musculus	Obg-like ATPase 1
+1438094_x_at	Q9CZ56	Mus musculus	Obg-like ATPase 1
+1438094_x_at	Q9CWE2	Mus musculus	Obg-like ATPase 1
+1438094_x_at	B1AYJ8	Mus musculus	Obg-like ATPase 1
+1438094_x_at	Q9CZ30	Mus musculus	Obg-like ATPase 1
+1438094_x_at	Q3TJF2	Mus musculus	Obg-like ATPase 1
+1438094_x_at	Q9CX91	Mus musculus	Obg-like ATPase 1
+1455001_x_at	Q5M9M0	Mus musculus	similar to 60S ribosomal protein L13a (Transplantation antigen P198) (Tum-P198 antigen); ribosomal protein L13A; similar to 60S ribosomal protein L13a; predicted gene 6533
+1455001_x_at	Q3TDS9	Mus musculus	similar to 60S ribosomal protein L13a (Transplantation antigen P198) (Tum-P198 antigen); ribosomal protein L13A; similar to 60S ribosomal protein L13a; predicted gene 6533
+1455001_x_at	P19253	Mus musculus	similar to 60S ribosomal protein L13a (Transplantation antigen P198) (Tum-P198 antigen); ribosomal protein L13A; similar to 60S ribosomal protein L13a; predicted gene 6533
+1449799_s_at	Q6NV73	Mus musculus	plakophilin 2
+1449799_s_at	Q9CQ73	Mus musculus	plakophilin 2
+1449799_s_at	Q3TIY5	Mus musculus	plakophilin 2
+1449368_at	Q3UKR1	Mus musculus	decorin
+1449368_at	Q3TSV1	Mus musculus	decorin
+1449368_at	Q6LAK9	Mus musculus	decorin
+1449368_at	P28654	Mus musculus	decorin
