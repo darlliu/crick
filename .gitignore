@@ -1,5 +1,8 @@
 *.py[cod]
 .*.sw*
+.sw*
+gmon.out
+core.*
 # C extensions
 *.so
 
