@@ -172,12 +172,15 @@ class crick_tester(object):
     def get_pathway_source(self):
         f=open("coregenes.list",'r');
         self.pathwayinfo={};
+        temp=[];
         for line in f:
-            if line.strip()=='': continue;
-            if line[0]=='#': continue;
+            line=line.strip();
+            if line=='': continue;
+            if '#' in line : continue;
             if line[0]=='%':
                 self.pathwayinfo[line[1:].strip()]=temp;
                 temp=[];
+                continue;
             temp.append(line.strip().lower());
         return
     def annotate_pathway (self):
@@ -196,7 +199,7 @@ class crick_tester(object):
 def main():
     c=david_collection();
     c.load();
-    c.printinfo();
+#    c.printinfo();
     d=crick_tester();
     #for sample in c.samples:
     #    d.load(sample);
