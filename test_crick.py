@@ -170,11 +170,12 @@ class crick_tester(object):
         self.exportfig(self.name+'_closed_pathway');
         return
     def get_pathway_source(self):
-        f=open("pathway.info",'r');
+        f=open("coregenes.list",'r');
         self.pathwayinfo={};
         for line in f:
+            if line.strip()=='': continue;
             if line[0]=='#': continue;
-            if line[0]=='~':
+            if line[0]=='%':
                 self.pathwayinfo[line[1:].strip()]=temp;
                 temp=[];
             temp.append(line.strip().lower());
@@ -201,8 +202,9 @@ def main():
     #    d.load(sample);
     #d=d.unpickle()
     d=d.unpickle('/home/yul13/tmp/DP_1_networkloaded.pkl')
-    
-   # d.open_ppi();
+    d.get_pathway_source();
+    print d.pathwayinfo;
+    #d.open_ppi();
     #d.closed_dna();
     #d.cleanup(True);
     #print d.n
