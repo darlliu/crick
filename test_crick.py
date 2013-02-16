@@ -23,6 +23,7 @@ class david_list(object):
     def __init__(self):
         self.name='';
         self.genes=[];
+        self.probes=[];
         self.descriptions=[];
 class david_collection(object):
     def __init__(self):
@@ -31,7 +32,7 @@ class david_collection(object):
     def load (self):
         for curdirname, subdirnames, curfilenames in os.walk('.'):
             for fname in curfilenames:
-                if (fname.split('.')[1])!='txt':
+                if (fname.split('.')[-1])!='txt':
                     continue;
                 temp=david_list();
                 temp.name=fname.split('.')[0];
@@ -43,9 +44,13 @@ class david_collection(object):
                 idx=line.index('to');
                 #find index at uniport column
                 for line in f:
+                    if line.split()[0] in temp.probes:
+                        continue
+                    temp.probes.append(line.split()[0]);
                     temp.genes.append(line.split()[idx]);
                     try:
-                        temp.descriptions=[item.strip().lower() for item in line.split()[2:]]
+                        temp.descriptions.append\
+                                ([item.strip().lower() for item in line.split()[4:]])
                     except IndexError:
                         #in case no description
                         pass;
@@ -54,18 +59,27 @@ class david_collection(object):
         return
     def printinfo(self):
         for sample in self.samples:
-            print sample.name, len(sample.genes), sample.genes[0];
+            print sample.name, len(sample.genes), sample.genes[0],sample.descriptions;
         return
 class crick_tester(object):
     def __init__(self):
         self.n=network.CrickNetwork(species=species.mm9);
         self.name='';
         self.path='/home/yul13/tmp/'
+        self.descriptions={};
     def load(self, varin):
         """load from a david list"""
-        self.n.add_proteins(varin.genes);
         self.name=varin.name+'_network'
-        print self.name, self.n;
+        for idx in xrange(len(varin.genes)):
+            gene=varin.genes[idx];
+            self.n.add_proteins([gene]);
+            for item, data in self.n.nodes(data=True):
+                try:
+                    if data["mylookup"]: continue;
+                except KeyError:
+                    data.features["tSource"]=varin.name.split('_')[0];
+                    data.features["mylookup"]=gene;
+                    self.descriptions[gene]=varin.descriptions[idx];
         self.pickle(self.name+'loaded')
     def pickle(self,name="default"):
         fout=open(self.path+name+".pkl",'wb');
@@ -155,24 +169,43 @@ class crick_tester(object):
         self.pickle();
         self.exportfig(self.name+'_closed_pathway');
         return
-    def annotate_tissue_source(self):
+    def get_pathway_source(self):
+        f=open("pathway.info",'r');
+        self.pathwayinfo={};
+        for line in f:
+            if line[0]=='#': continue;
+            if line[0]=='~':
+                self.pathwayinfo[line[1:].strip()]=temp;
+                temp=[];
+            temp.append(line.strip().lower());
+        return
+    def annotate_pathway (self):
         """a very simple method for annotating\
-                which tissue the genes come from"""
-        return        
+                which pathway the genes come from
+                """
+        return;
     def annotate_tf_from_list(self):
         """check if the gene is in a given gene list"""
+        
         return;
+    def annotate_tf_from_descriptions(self,keywords=\
+            ["transcription","factor","binding","regulate","polymerase"\
+                    ]):
+        """attemp to annotate tf identity from david information"""
 def main():
     c=david_collection();
     c.load();
     c.printinfo();
     d=crick_tester();
+    #for sample in c.samples:
+    #    d.load(sample);
     #d=d.unpickle()
     d=d.unpickle('/home/yul13/tmp/DP_1_networkloaded.pkl')
+    
    # d.open_ppi();
-    d.closed_dna();
+    #d.closed_dna();
     #d.cleanup(True);
-    print d.n
-    d.exportfig();
+    #print d.n
+    #d.exportfig();
 main();
 
