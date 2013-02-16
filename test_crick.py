@@ -193,10 +193,12 @@ class crick_tester(object):
             for key,item in self.pathwayinfo.items():
                 for lookup in item:
                     if lookup in data.features["name"].lower():
-                        annote.append("key");
+                        annote.append(key);
                         break;
             data.features["tPathwayInfo"]=annote;
-            print "annotation:", data.features("tPathwayInfo");
+            print "going through", data.features["name"]
+            if data.features["tPathwayInfo"]:
+                print "annotation:", data.features["tPathwayInfo"];
         return;
     def annotate_tf_from_list(self):
         """check if the gene is in a given gene list"""
@@ -214,9 +216,10 @@ def main():
     #for sample in c.samples:
     #    d.load(sample);
     #d=d.unpickle()
-    d=d.unpickle('/home/yul13/tmp/DP_1_networkloaded.pkl')
+    d=d.unpickle('/home/yul13/tmp/DP_2_networkloaded.pkl')
     d.get_pathway_source();
     print d.pathwayinfo;
+    d.annotate_pathway();
     #d.open_ppi();
     #d.closed_dna();
     #d.cleanup(True);
