@@ -10,7 +10,6 @@ catenin
 tcf3
 tcf4
 %Wnt Pathway Genes
-tgf
 bmpr1
 noggin
 nog
@@ -35,7 +34,12 @@ secret
 jagged1
 fucosyl
 %Notch Related Genes
-tgf
+tgfbr2
+tgfb1
+tgfb2
+tgfb3
+tgfbr1
+%TGF Pathway Genes
 fgf7
 fgf5
 fgfr2
@@ -44,7 +48,7 @@ fgfr3
 fgfr4
 fgf10
 fgf18
-%FGF Related Genes
+%FGF Pathway Genes
 runx1
 sox9
 lhx2

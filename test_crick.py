@@ -67,6 +67,7 @@ class crick_tester(object):
         self.name='';
         self.path='/home/yul13/tmp/'
         self.descriptions={};
+        self.pathwayinfo={};
     def load(self, varin):
         """load from a david list"""
         self.name=varin.name+'_network'
@@ -187,6 +188,15 @@ class crick_tester(object):
         """a very simple method for annotating\
                 which pathway the genes come from
                 """
+        for node, data in self.n.nodes(data=True):
+            annote=[];
+            for key,item in self.pathwayinfo.items():
+                for lookup in item:
+                    if lookup in data.features["name"].lower():
+                        annote.append("key");
+                        break;
+            data.features["tPathwayInfo"]=annote;
+            print "annotation:", data.features("tPathwayInfo");
         return;
     def annotate_tf_from_list(self):
         """check if the gene is in a given gene list"""
