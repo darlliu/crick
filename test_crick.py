@@ -2,6 +2,8 @@ import unittest
 import sys
 import os
 import cPickle
+import pickle
+import gzip
 from crick.builders.protein_protein_edges.generic_builder import *
 from crick.builders.protein_protein_edges.BioGRID_builder import *
 from crick.builders.protein_dna_edges.MotifMap_builder import *
@@ -83,7 +85,17 @@ class crick_tester(object):
                     data.features["mylookup"]=gene;
                     self.descriptions[gene]=varin.descriptions[idx];
                     data.features["t_david_description"]=' '.join(varin.descriptions[idx]);
-        self.pickle(self.name+'loaded')
+        self.pickle(self.name+'loaded');
+        return;
+    def load_refid(self,varin):
+        """load in refids for nodes"""
+        for item, data in self.n.nodes(data=True):
+            try:
+                lookup=data.features["mylookup"];
+                data.features["probe_refid"]=varin.probes[varin.genes.index(lookup)];
+            except KeyError:
+                data.features["probe_refid"]="";
+        return;
     def pickle(self,name="default"):
         fout=open(self.path+name+".pkl",'wb');
         gout=open("loaded.order",'wa');
@@ -179,6 +191,7 @@ class crick_tester(object):
         self.pickle(self.name+"_closeddna")
         self.exportfig(self.name+'_closed_dna_'+domain)
         return
+
     def closed_pathway(self):
         """build pathway edges"""
         print "trying to build pathway edges"
@@ -188,6 +201,7 @@ class crick_tester(object):
         self.pickle(self.name+"closed_pathway");
         self.exportfig(self.name+'_closed_pathway');
         return
+    
     def get_pathway_source(self):
         f=open("coregenes.list",'r');
         self.pathwayinfo={};
@@ -202,6 +216,7 @@ class crick_tester(object):
                 continue;
             temp.append(line.strip().lower());
         return
+    
     def annotate_pathway (self):
         """a very simple method for annotating\
                 which pathway the genes come from
@@ -219,10 +234,11 @@ class crick_tester(object):
             #if data.features["tPathwayInfo"]:
             #    print "annotation:", data.features["tPathwayInfo"];
         return;
+    
     def draw_pathway_chart(self):
         """Simple chart drawing method to annoate pathway source for each node"""
         #template="http://chart.googleapis.com/chart?cht=p&chs=400x200&chd=t:{0}&chl={1}&chtt=Pathway%20Involved&chco={2}"
-        template="http://chart.googleapis.com/chart?cht=pc&chs=400x400&chd=s:C,{0}&chdl={1}&chco={2}|FFFFFF,{3}|FFFFFF"
+        template="http://chart.googleapis.com/chart?cht=pc&chtt=Pathway%20Tissue%20info&chs=400x400&chd=s:C,{0}&chdl={1}&chco={2}|FFFFFF,{3}|FFFFFF"
         template2="http://chart.googleapis.com/chart?cht=pc&chs=400x400&chd=s:C,{0}&chco={1}|FFFFFF,{2}|FFFFFF"
         labels=self.pathwayinfo.keys();
         labels2=['dp','df','ors','mx','ml','other']
@@ -268,6 +284,7 @@ class crick_tester(object):
                         );
                 print data.features["tChartUrl"];
         return
+    
     def annotate_other_nodes(self):
         for nodes,data in self.n.nodes(data=True):
             try:
@@ -277,10 +294,39 @@ class crick_tester(object):
                 data.features["t_source"]="other";
         return;
 
+    
     def annotate_tf_from_list(self):
         """check if the gene is in a given gene list"""
         
         return;
+    def annotate_cybert_results(self):
+        f=gzip.open("means.gz","rb");
+        means=pickle.load(f);
+        g=gzip.open("bsds.gz","rb");
+        bsds=pickle.load(g);
+        h=open("labels.lb","rb");
+        labels=pickle.load(h);
+        for node, data in self.n.nodes(data=True):
+            try:
+                mean=means[data.features["probe_refid"]];
+                bsd=bsds[data.features["probe_refid"]];
+                data.features["cybert_means"]=mean;
+                am=self.draw_hist(mean,bsds,labels);
+                data.features["cybert_sd_bayes"]=bsd;
+                data.features["cybert_plot"]=am;
+            except:
+                data.features["cybert_means"]=[];
+                data.features["cybert_sd_bayes"]=[];
+        
+        return
+    def draw_hist(self,means,bsds,labels,name="CyberT%20Means%20and%20Bayesian%20SD"):
+        """draw a double layer histogram given data"""
+        template="https://chart.googleapis.com/chart?cht=bvs&chs=400x400&chtt={3}&chd=t:{0}|{1}&chdl=bsd|mean&chco=4D89F9,C6D9FD&chxt=x,y&chxl=0:|{2}&chbh=a&&chds=a"
+        r1=[str(entry) for entry in bsds];
+        r2=[str(entry) for entry in means];
+        return template.format(",".join(r1),",".join(r2),'|'.join(labels),name);
+
+
     def annotate_tf_from_descriptions(self,keywords=\
             ["transcription","core","factor","binding","regulat","polymerase"\
                     ]):
@@ -290,6 +336,7 @@ class crick_tester(object):
                 try:
                     if lookup in self.descriptions[key]:
                         item.features["t_is_ff_from_list"]="true";
+                        item.features["border_color"]="#FF6600"
                         break;
                     else:
                         item.features["t_is_ff_from_list"]="false";
@@ -313,17 +360,20 @@ def initialize_all_crick_objects():
         cricks.append(d);
     return cricks;
 def main():
-    #networks=load_all_crick_objects();
-    networks=initialize_all_crick_objects();
+    networks=load_all_crick_objects();
+    #networks=initialize_all_crick_objects();
+    c=david_collection();
     for d in networks:
-         d.get_pathway_source();
-         d.open_ppi();
-         d.closed_dna();
-         d.annotate_pathway();
-         d.annotate_tf_from_descriptions();
-         d.draw_pathway_chart();
-         d.exportfig(d.name+"_annoated");
-         d.pickle(d.name+"_initial_annotation")
+        d.get_pathway_source();
+        d.load_refid(c.samples[0]);
+        #only need to load once
+        #d.open_ppi();
+        #d.closed_dna();
+        d.annotate_pathway();
+        d.annotate_tf_from_descriptions();
+        d.draw_pathway_chart();
+        d.exportfig(d.name+"_annoated");
+        d.pickle(d.name+"_initial_annotation")
     #d=d.unpickle('/home/yul13/tmp/ORS_2_networkloaded.pkl')
     #d=d.unpickle()
     #d.annotate_pathway();
