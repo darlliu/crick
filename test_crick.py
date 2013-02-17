@@ -11,6 +11,7 @@ from crick.builders.protein_pathway_edges.ProteinPathwayEdge_builder import *
 from crick.builders.protein_pathway_edges.generic_builder import *
 from crick.const import species
 from crick.nodes.pathway import NCIPathway
+from crick.viz.google_chart import *
 ## object classes
 #from crick.objects.DNA import DNA, UCSCGene
 #from crick.objects.Protein import UniProtProtein
@@ -201,6 +202,37 @@ class crick_tester(object):
             #if data.features["tPathwayInfo"]:
             #    print "annotation:", data.features["tPathwayInfo"];
         return;
+    def draw_pathway_chart(self):
+        """Simple chart drawing method to annoate pathway source for each node"""
+        template="https://chart.googleapis.com/chart?\
+                cht=p3&chs=400x200&chd=t:{0}&chl={1}&chtt=Pathway%20Involved&chco={2}"
+        labels=self.pathwayinfo.keys();
+        colors=['000000','FF0000','00FF00','0000FF','FF00FF','FFFF00','00FFFF','888888','222222'];
+        if len(colors)<len(labels):
+            raise IndexError;
+        mycolordict={};
+        for keyword in labels:
+            mycolordict[keyword]=colors[labels.index(keyword)];
+        for node, data in self.n.nodes(data=True):
+            chartlabels=[];
+            chartcolors=[];
+            for pathway in data.features["tPathwayInfo"]:
+                try:
+                    chartcolors.append(mycolordict[pathawy]);
+                    chartlabels.append(pathway);
+                except KeyError:
+                    continue;
+            numbers=['2' for i in xrange(len(chartlabels))]; 
+            if len(chartlabels)==0:
+                data.features["tChartUrl"]=template.format("2","None","000000");
+                continue;
+            else:
+                data.features["tChartUrl"]=template.format(\
+                        ",".join(numbers), '|'.join(chartlabels),'|'.join(chartcolors)\
+                        );
+                print data.features["tChartUrl"];
+
+        return
     def annotate_tf_from_list(self):
         """check if the gene is in a given gene list"""
         
