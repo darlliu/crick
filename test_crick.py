@@ -77,7 +77,7 @@ class crick_tester(object):
             self.n.add_proteins([gene]);
             for item, data in self.n.nodes(data=True):
                 try:
-                    if data["mylookup"]: continue;
+                    if data.features["mylookup"]: continue;
                 except KeyError:
                     data.features["t_source"]=varin.name.split('_')[0].lower();
                     data.features["mylookup"]=gene;
@@ -93,6 +93,17 @@ class crick_tester(object):
         cPickle.dump(self,fout);
         fout.close();
         return
+    def fix_my_lookup(self):
+        for node, data in self.n.nodes(data=True):
+            try:
+                temp=data.features["mylookup"];
+                data.features["mylookup"]=data.features["id"];
+                data.features["t_david_description"]=\
+                        ' '.join(self.descriptions[data.features['id']]);
+            except KeyError:
+                pass;
+        return;
+
     def unpickle(self,name='/home/yul13/tmp/default.pkl'):
         """unpickles. for some reason manual reasignment is needed, also uses full path"""
         fin=open(name,'rb');
@@ -120,8 +131,8 @@ class crick_tester(object):
         ppibuilder.build_network(for_nodes='all', closed_network=True,
                 cache=False);
         self.cleanup();
-        self.pickle()
-        self.exportfig(self.name+'_closed_ppi');
+        self.pickle(self.name+"_closedppi")
+        self.exportfig(self.name+'_closedppi');
 # a simple closed ppi network
         return
     def open_ppi(self):
@@ -131,8 +142,8 @@ class crick_tester(object):
                 cache=False);
         self.cleanup();
         self.annotate_other_nodes();
-        self.pickle()
-        self.exportfig(self.name+'_open_ppi');
+        self.pickle(self.name+"_openppi")
+        self.exportfig(self.name+'_openppi');
 # a simple closed ppi network
         return
     def open_dna(self,domain='target'):
@@ -149,7 +160,7 @@ class crick_tester(object):
             );
         self.cleanup();
         self.annotate_other_nodes();
-        self.pickle()
+        self.pickle(self.name+"_opendna")
         self.exportfig(self.name+'_open_dna_'+domain)
         return
     def closed_dna(self,domain='source'):
@@ -165,7 +176,7 @@ class crick_tester(object):
                 closed_network=True,
             );
         self.cleanup();
-        self.pickle()
+        self.pickle(self.name+"_closeddna")
         self.exportfig(self.name+'_closed_dna_'+domain)
         return
     def closed_pathway(self):
@@ -174,7 +185,7 @@ class crick_tester(object):
         pabuilder=NCIProteinPathwayEdgeBuilder(self.n, target=NCIPathway);
         pabuilder.build_network(closed_network=True,for_nodes='all');
         self.cleanup();
-        self.pickle();
+        self.pickle(self.name+"closed_pathway");
         self.exportfig(self.name+'_closed_pathway');
         return
     def get_pathway_source(self):
@@ -288,7 +299,7 @@ def load_all_crick_objects(basedir='/home/yul13/tmp/'):
     cricks=[];
     for name in os.listdir(basedir):
         temp=crick_tester();
-        temp.unpickle(basedir+name);
+        temp=temp.unpickle(basedir+name);
         cricks.append(temp);
     return cricks;
 def initialize_all_crick_objects():
@@ -302,7 +313,8 @@ def initialize_all_crick_objects():
         cricks.append(d);
     return cricks;
 def main():
-    networks=load_all_crick_objects();
+    #networks=load_all_crick_objects();
+    networks=initialize_all_crick_objects();
     for d in networks:
          d.get_pathway_source();
          d.open_ppi();
@@ -311,6 +323,7 @@ def main():
          d.annotate_tf_from_descriptions();
          d.draw_pathway_chart();
          d.exportfig(d.name+"_annoated");
+         d.pickle(d.name+"_initial_annotation")
     #d=d.unpickle('/home/yul13/tmp/ORS_2_networkloaded.pkl')
     #d=d.unpickle()
     #d.annotate_pathway();
