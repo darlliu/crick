@@ -81,6 +81,7 @@ class crick_tester(object):
                     data.features["tSource"]=varin.name.split('_')[0];
                     data.features["mylookup"]=gene;
                     self.descriptions[gene]=varin.descriptions[idx];
+                    data.features["tDavidDescription"]=' '.join(varin.descriptions[idx]);
         self.pickle(self.name+'loaded')
     def pickle(self,name="default"):
         fout=open(self.path+name+".pkl",'wb');
@@ -196,18 +197,26 @@ class crick_tester(object):
                         annote.append(key);
                         break;
             data.features["tPathwayInfo"]=annote;
-            print "going through", data.features["name"]
+            #print "going through", data.features["name"]
             if data.features["tPathwayInfo"]:
-                print "annotation:", data.features["tPathwayInfo"];
+            #    print "annotation:", data.features["tPathwayInfo"];
         return;
     def annotate_tf_from_list(self):
         """check if the gene is in a given gene list"""
         
         return;
     def annotate_tf_from_descriptions(self,keywords=\
-            ["transcription","factor","binding","regulate","polymerase"\
+            ["transcription","core","factor","binding","regulat","polymerase"\
                     ]):
         """attemp to annotate tf identity from david information"""
+        for key,item in self.n.nodes(data=True):
+            for lookup in keywords:
+                if lookup in self.descriptions{key}:
+                    item.features["tIsTfFromList"]="True";
+                    break;
+                else:
+                    item.features["tIsTfFromList"]="False";
+            print "going through", item.features["name"]
 def main():
     c=david_collection();
     c.load();
