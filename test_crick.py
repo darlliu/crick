@@ -210,34 +210,47 @@ class crick_tester(object):
     def draw_pathway_chart(self):
         """Simple chart drawing method to annoate pathway source for each node"""
         #template="http://chart.googleapis.com/chart?cht=p&chs=400x200&chd=t:{0}&chl={1}&chtt=Pathway%20Involved&chco={2}"
-        template="http://chart.googleapis.com/chart?cht=p&chs=400x200&chd=t:{0}&chl={1}&chco={2}"
+        template="http://chart.googleapis.com/chart?cht=p&chs=400x400&chd=s:C,{0}&chdl={1}&chco={2},{3}"
         labels=self.pathwayinfo.keys();
-        colors=['000000','FF0000','00FF00','0000FF','FF00FF','FFFF00','00FFFF','888888','222222'];
+        labels2=['dp','df','ors','mx','ml','other']
+        colors=['000000','FF0000','00FF00','0000FF','FF00FF','FFFF00','00FFFF','880088','008888'];
+        colort=['222222','002222','222200','002200','000022','005500'];
+
         if len(colors)<len(labels):
             raise IndexError;
         mycolordict={};
         for keyword in labels:
             mycolordict[keyword]=colors[labels.index(keyword)];
+        for keyword in labels2:
+            mycolordict2[keyword]=colort[labels.index(keyword)];
         for node, data in self.n.nodes(data=True):
             chartlabels=[];
             chartcolors=[];
+            #first we get the inner circle which is the tissue type
+            try:
+                temp=data.features['t_source'];
+                chartlabels.append(temp);
+                chartcolors.append(mycolordict2[temp]);
+            except KeyError:
+                chartlabels.append('unknown');
+                chartcolors.append('777777');
             for pathway in data.features["tPathwayInfo"]:
                 try:
                     chartcolors.append(mycolordict[pathway]);
                     chartlabels.append('%20'.join(pathway.split()));
                 except KeyError:
                     continue;
-            numbers=['2' for i in xrange(len(chartlabels))]; 
-            if len(chartlabels)==0:
-                data.features["tChartUrl"]=template.format("2","None","000000");
+            numbers=['C' for i in xrange(len(chartlabels))]; 
+            if len(chartlabels)==1:
+                data.features["tChartUrl"]=template.format("2",chartlabels[0]+"|None",chartcolors[0],"FFFFFF");
+                data.features["_CustomGraphics"]=data.features["tChartUrl"];
                 continue;
             else:
                 data.features["tChartUrl"]=template.format(\
-                        ",".join(numbers), '|'.join(chartlabels),'|'.join(chartcolors)\
+                        ",".join(numbers), '|'.join(chartlabels),chartcolors[0],'|'.join(chartcolors[1:])\
                         );
                 data.features["_CustomGraphics"]=data.features["tChartUrl"];
                 print data.features["tChartUrl"];
-
         return
     def annotate_other_nodes(self):
         for nodes,data in self.n.nodes(data=True):
@@ -267,14 +280,17 @@ def main():
     c.load();
 #    c.printinfo();
     d=crick_tester();
-    for sample in c.samples:
-        d.load(sample);
-        d.annotate_pathway();
-        d.annotate_tf_from_descriptions();
-        d.draw_pathway_chart();
+#    for sample in c.samples:
+#        d.load(sample);
+#        d.annotate_pathway();
+#        d.annotate_tf_from_descriptions();
+#        d.draw_pathway_chart();
     #d=d.unpickle()
     d=d.unpickle('/home/yul13/tmp/ORS_2_networkloaded.pkl')
     d.get_pathway_source();
+    d.annotate_pathway();
+    d.annotate_tf_from_descriptions();
+    d.draw_pathway_chart();
 #    print d.pathwayinfo;
     #d.open_ppi();
     #d.closed_dna();
