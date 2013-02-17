@@ -198,7 +198,7 @@ class crick_tester(object):
                         break;
             data.features["tPathwayInfo"]=annote;
             #print "going through", data.features["name"]
-            if data.features["tPathwayInfo"]:
+            #if data.features["tPathwayInfo"]:
             #    print "annotation:", data.features["tPathwayInfo"];
         return;
     def annotate_tf_from_list(self):
@@ -211,12 +211,11 @@ class crick_tester(object):
         """attemp to annotate tf identity from david information"""
         for key,item in self.n.nodes(data=True):
             for lookup in keywords:
-                if lookup in self.descriptions{key}:
+                if lookup in self.descriptions[key]:
                     item.features["tIsTfFromList"]="True";
                     break;
                 else:
                     item.features["tIsTfFromList"]="False";
-            print "going through", item.features["name"]
 def main():
     c=david_collection();
     c.load();
@@ -227,8 +226,9 @@ def main():
     #d=d.unpickle()
     d=d.unpickle('/home/yul13/tmp/DP_2_networkloaded.pkl')
     d.get_pathway_source();
-    print d.pathwayinfo;
+#    print d.pathwayinfo;
     d.annotate_pathway();
+    d.annotate_tf_from_descriptions();
     #d.open_ppi();
     #d.closed_dna();
     #d.cleanup(True);
