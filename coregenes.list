@@ -9,7 +9,7 @@ lef1
 catenin
 tcf3
 tcf4
-%Wnt Pathway Genes
+%Wnt
 bmpr1
 noggin
 nog
@@ -19,7 +19,7 @@ folli
 bmp2
 bmp4
 bmp6
-%BMP Pathway Genes
+%BMP
 shh
 dhh
 smo
@@ -27,19 +27,19 @@ gli1
 gli2
 gli3
 ptch1
-%Shh Pathway Genes
+%Shh
 notch
 rbpj
 secret
 jagged1
 fucosyl
-%Notch Related Genes
+%Notch
 tgfbr2
 tgfb1
 tgfb2
 tgfb3
 tgfbr1
-%TGF Pathway Genes
+%TGF
 fgf7
 fgf5
 fgfr2
@@ -48,7 +48,7 @@ fgfr3
 fgfr4
 fgf10
 fgf18
-%FGF Pathway Genes
+%FGF
 runx1
 sox9
 lhx2
@@ -59,4 +59,4 @@ msx2
 foxn1
 p63
 gata3
-%Core Transcription Factor Genes
+%Core TF

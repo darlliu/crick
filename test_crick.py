@@ -79,13 +79,16 @@ class crick_tester(object):
                 try:
                     if data["mylookup"]: continue;
                 except KeyError:
-                    data.features["tSource"]=varin.name.split('_')[0];
+                    data.features["t_source"]=varin.name.split('_')[0].lower();
                     data.features["mylookup"]=gene;
                     self.descriptions[gene]=varin.descriptions[idx];
-                    data.features["tDavidDescription"]=' '.join(varin.descriptions[idx]);
+                    data.features["t_david_description"]=' '.join(varin.descriptions[idx]);
         self.pickle(self.name+'loaded')
     def pickle(self,name="default"):
         fout=open(self.path+name+".pkl",'wb');
+        gout=open("loaded.order",'wa');
+        gout.write(name);
+        gout.write("\n");
         print "trying to pickle: ", fout;
         cPickle.dump(self,fout);
         fout.close();
@@ -127,6 +130,7 @@ class crick_tester(object):
         ppibuilder.build_network(for_nodes='all', closed_network=False,
                 cache=False);
         self.cleanup();
+        self.annotate_other_nodes();
         self.pickle()
         self.exportfig(self.name+'_open_ppi');
 # a simple closed ppi network
@@ -144,6 +148,7 @@ class crick_tester(object):
                 search_domain=domain,
             );
         self.cleanup();
+        self.annotate_other_nodes();
         self.pickle()
         self.exportfig(self.name+'_open_dna_'+domain)
         return
@@ -204,8 +209,8 @@ class crick_tester(object):
         return;
     def draw_pathway_chart(self):
         """Simple chart drawing method to annoate pathway source for each node"""
-        template="https://chart.googleapis.com/chart?\
-                cht=p3&chs=400x200&chd=t:{0}&chl={1}&chtt=Pathway%20Involved&chco={2}"
+        #template="http://chart.googleapis.com/chart?cht=p&chs=400x200&chd=t:{0}&chl={1}&chtt=Pathway%20Involved&chco={2}"
+        template="http://chart.googleapis.com/chart?cht=p&chs=400x200&chd=t:{0}&chl={1}&chco={2}"
         labels=self.pathwayinfo.keys();
         colors=['000000','FF0000','00FF00','0000FF','FF00FF','FFFF00','00FFFF','888888','222222'];
         if len(colors)<len(labels):
@@ -218,8 +223,8 @@ class crick_tester(object):
             chartcolors=[];
             for pathway in data.features["tPathwayInfo"]:
                 try:
-                    chartcolors.append(mycolordict[pathawy]);
-                    chartlabels.append(pathway);
+                    chartcolors.append(mycolordict[pathway]);
+                    chartlabels.append('%20'.join(pathway.split()));
                 except KeyError:
                     continue;
             numbers=['2' for i in xrange(len(chartlabels))]; 
@@ -230,9 +235,18 @@ class crick_tester(object):
                 data.features["tChartUrl"]=template.format(\
                         ",".join(numbers), '|'.join(chartlabels),'|'.join(chartcolors)\
                         );
+                data.features["_CustomGraphics"]=data.features["tChartUrl"];
                 print data.features["tChartUrl"];
 
         return
+    def annotate_other_nodes(self):
+        for nodes,data in self.n.nodes(data=True):
+            try data.features["t_source"]:
+                continue;
+            except KeyError:
+                data.features["t_source"]="other";
+        return;
+
     def annotate_tf_from_list(self):
         """check if the gene is in a given gene list"""
         
@@ -244,27 +258,28 @@ class crick_tester(object):
         for key,item in self.n.nodes(data=True):
             for lookup in keywords:
                 if lookup in self.descriptions[key]:
-                    item.features["tIsTfFromList"]="True";
+                    item.features["t_is_ff_from_list"]="true";
                     break;
                 else:
-                    item.features["tIsTfFromList"]="False";
+                    item.features["t_is_ff_from_list"]="false";
 def main():
     c=david_collection();
     c.load();
 #    c.printinfo();
     d=crick_tester();
-    #for sample in c.samples:
-    #    d.load(sample);
+    for sample in c.samples:
+        d.load(sample);
+        d.annotate_pathway();
+        d.annotate_tf_from_descriptions();
+        d.draw_pathway_chart();
     #d=d.unpickle()
-    d=d.unpickle('/home/yul13/tmp/DP_2_networkloaded.pkl')
+    d=d.unpickle('/home/yul13/tmp/ORS_2_networkloaded.pkl')
     d.get_pathway_source();
 #    print d.pathwayinfo;
-    d.annotate_pathway();
-    d.annotate_tf_from_descriptions();
     #d.open_ppi();
     #d.closed_dna();
     #d.cleanup(True);
     #print d.n
-    #d.exportfig();
+    d.exportfig("mapping");
 main();
 
