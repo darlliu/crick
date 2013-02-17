@@ -3,6 +3,8 @@
 .sw*
 gmon.out
 core.*
+*.log
+*.order
 # C extensions
 *.so
 

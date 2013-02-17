@@ -8,9 +8,17 @@ apc
 lef1
 catenin
 tcf3
+fzd
+sfrp
+dkkl1
+dkk4
+wif
+lcn
+tinagl
 tcf4
 %Wnt
 bmpr1
+bmpr2
 noggin
 nog
 activin
@@ -19,6 +27,8 @@ folli
 bmp2
 bmp4
 bmp6
+bmp10
+bmp8
 %BMP
 shh
 dhh
@@ -58,5 +68,6 @@ dlx3
 msx2
 foxn1
 p63
-gata3
+p53
+gata
 %Core TF

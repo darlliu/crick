@@ -1,0 +1,24 @@
+#$ -N haircycle
+#$ -cwd
+#$ -q benzene.q
+#$ -S /bin/bash
+#$ -o /home/yul13/tmp/clusteroutput.txt
+#$ -e /home/yul13/tmp/clustererror.txt
+#$ -l mem_free_consum=1M
+
+date
+source ~/codebase/crick/crick_centos64-py26.profile
+echo $HOST
+module load gcc
+module load python
+module load ics-default
+echo checking current machine
+uname -a
+which gcc
+which python
+gcc -v
+echo running crick project by Yu
+#source /home/yul13/.bash_profile
+echo "Testing example hello code"
+pwd
+python ./hello.py

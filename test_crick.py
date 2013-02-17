@@ -200,6 +200,7 @@ class crick_tester(object):
             for key,item in self.pathwayinfo.items():
                 for lookup in item:
                     if lookup in data.features["name"].lower():
+                        print "found a feature ", lookup, data.features["name"].lower();
                         annote.append(key);
                         break;
             data.features["tPathwayInfo"]=annote;
@@ -210,19 +211,21 @@ class crick_tester(object):
     def draw_pathway_chart(self):
         """Simple chart drawing method to annoate pathway source for each node"""
         #template="http://chart.googleapis.com/chart?cht=p&chs=400x200&chd=t:{0}&chl={1}&chtt=Pathway%20Involved&chco={2}"
-        template="http://chart.googleapis.com/chart?cht=p&chs=400x400&chd=s:C,{0}&chdl={1}&chco={2},{3}"
+        template="http://chart.googleapis.com/chart?cht=pc&chs=400x400&chd=s:C,{0}&chdl={1}&chco={2}|FFFFFF,{3}|FFFFFF"
+        template2="http://chart.googleapis.com/chart?cht=pc&chs=400x400&chd=s:C,{0}&chco={1}|FFFFFF,{2}|FFFFFF"
         labels=self.pathwayinfo.keys();
         labels2=['dp','df','ors','mx','ml','other']
-        colors=['000000','FF0000','00FF00','0000FF','FF00FF','FFFF00','00FFFF','880088','008888'];
+        colors=['004444','FF0000','00FF00','0000FF','FF00FF','FFFF00','00FFFF','880088','008888'];
         colort=['222222','002222','222200','002200','000022','005500'];
 
         if len(colors)<len(labels):
             raise IndexError;
         mycolordict={};
+        mycolordict2={};
         for keyword in labels:
             mycolordict[keyword]=colors[labels.index(keyword)];
         for keyword in labels2:
-            mycolordict2[keyword]=colort[labels.index(keyword)];
+            mycolordict2[keyword]=colort[labels2.index(keyword)];
         for node, data in self.n.nodes(data=True):
             chartlabels=[];
             chartcolors=[];
@@ -233,28 +236,31 @@ class crick_tester(object):
                 chartcolors.append(mycolordict2[temp]);
             except KeyError:
                 chartlabels.append('unknown');
-                chartcolors.append('777777');
+                chartcolors.append('EEEEEE');
             for pathway in data.features["tPathwayInfo"]:
                 try:
                     chartcolors.append(mycolordict[pathway]);
                     chartlabels.append('%20'.join(pathway.split()));
                 except KeyError:
                     continue;
-            numbers=['C' for i in xrange(len(chartlabels))]; 
+            numbers=['C' for i in xrange(len(chartlabels)-1)]; 
             if len(chartlabels)==1:
                 data.features["tChartUrl"]=template.format("2",chartlabels[0]+"|None",chartcolors[0],"FFFFFF");
-                data.features["_CustomGraphics"]=data.features["tChartUrl"];
+                data.features["_CustomGraphics"]=template2.format("2",chartcolors[0],"FFFFFF");
                 continue;
             else:
                 data.features["tChartUrl"]=template.format(\
-                        ",".join(numbers), '|'.join(chartlabels),chartcolors[0],'|'.join(chartcolors[1:])\
+                        "".join(numbers), '|'.join(chartlabels),chartcolors[0],'|'.join(chartcolors[1:])\
                         );
-                data.features["_CustomGraphics"]=data.features["tChartUrl"];
+                data.features["_CustomGraphics"]=template2.format(\
+                        "".join(numbers), chartcolors[0],'|'.join(chartcolors[1:])\
+                        );
                 print data.features["tChartUrl"];
         return
     def annotate_other_nodes(self):
         for nodes,data in self.n.nodes(data=True):
-            try data.features["t_source"]:
+            try:
+                data.features["t_source"]
                 continue;
             except KeyError:
                 data.features["t_source"]="other";
@@ -270,32 +276,37 @@ class crick_tester(object):
         """attemp to annotate tf identity from david information"""
         for key,item in self.n.nodes(data=True):
             for lookup in keywords:
-                if lookup in self.descriptions[key]:
-                    item.features["t_is_ff_from_list"]="true";
-                    break;
-                else:
+                try:
+                    if lookup in self.descriptions[key]:
+                        item.features["t_is_ff_from_list"]="true";
+                        break;
+                    else:
+                        item.features["t_is_ff_from_list"]="false";
+                except KeyError:
                     item.features["t_is_ff_from_list"]="false";
 def main():
     c=david_collection();
     c.load();
 #    c.printinfo();
     d=crick_tester();
-#    for sample in c.samples:
-#        d.load(sample);
-#        d.annotate_pathway();
-#        d.annotate_tf_from_descriptions();
-#        d.draw_pathway_chart();
+    for sample in c.samples:
+         d.load(sample);
+         d.open_ppi();
+         d.closed_dna();
+         d.annotate_pathway();
+         d.annotate_tf_from_descriptions();
+         d.draw_pathway_chart();
+         d.exportfig(d.name+"_annoated");
+    #d=d.unpickle('/home/yul13/tmp/ORS_2_networkloaded.pkl')
     #d=d.unpickle()
-    d=d.unpickle('/home/yul13/tmp/ORS_2_networkloaded.pkl')
-    d.get_pathway_source();
-    d.annotate_pathway();
-    d.annotate_tf_from_descriptions();
-    d.draw_pathway_chart();
+    #d.get_pathway_source();
+    #d.annotate_pathway();
+    #d.annotate_tf_from_descriptions();
+    #d.draw_pathway_chart();
 #    print d.pathwayinfo;
     #d.open_ppi();
     #d.closed_dna();
     #d.cleanup(True);
     #print d.n
-    d.exportfig("mapping");
 main();
 
