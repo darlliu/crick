@@ -284,13 +284,26 @@ class crick_tester(object):
                         item.features["t_is_ff_from_list"]="false";
                 except KeyError:
                     item.features["t_is_ff_from_list"]="false";
-def main():
+def load_all_crick_objects(basedir='/home/yul13/tmp/'):
+    cricks=[];
+    for name in os.listdir(basedir):
+        temp=crick_tester();
+        temp.unpickle(basedir+name);
+        cricks.append(temp);
+    return cricks;
+def initialize_all_crick_objects():
     c=david_collection();
     c.load();
-#    c.printinfo();
+    c.printinfo();
+    cricks=[];
     for sample in c.samples:
-         d=crick_tester();
-         d.load(sample);
+        d=crick_tester();
+        d.load(sample);
+        cricks.append(d);
+    return cricks;
+def main():
+    networks=load_all_crick_objects();
+    for d in networks:
          d.get_pathway_source();
          d.open_ppi();
          d.closed_dna();
