@@ -288,9 +288,10 @@ def main():
     c=david_collection();
     c.load();
 #    c.printinfo();
-    d=crick_tester();
     for sample in c.samples:
+         d=crick_tester();
          d.load(sample);
+         d.get_pathway_source();
          d.open_ppi();
          d.closed_dna();
          d.annotate_pathway();
@@ -299,7 +300,6 @@ def main():
          d.exportfig(d.name+"_annoated");
     #d=d.unpickle('/home/yul13/tmp/ORS_2_networkloaded.pkl')
     #d=d.unpickle()
-    #d.get_pathway_source();
     #d.annotate_pathway();
     #d.annotate_tf_from_descriptions();
     #d.draw_pathway_chart();
