@@ -112,6 +112,7 @@ class crick_tester(object):
         self.path='/home/yul13/tmp/'
         self.descriptions={};
         self.pathwayinfo={};
+        self.deleted=[];
     def load(self, varin):
         """load from a david list"""
         self.name=varin.name+'_network'
@@ -236,6 +237,61 @@ class crick_tester(object):
         self.pickle(self.name+"_opendna")
         self.exportfig(self.name+'_open_dna_'+domain)
         return
+    def annotate_connections():
+        """go through each node and annotate its connections, inflating its size at the same time,
+        also, for connected nodes count the number of nodes that connects to them,
+        as of now we assume directed edges such that no redundant edges are produced"""
+        for keys in self.n.edge.keys():
+            for key in keys:
+                if len(self.n.edge[key])==0: continue;
+                else:
+                    pair_keys=self.n.edge[key].keys();
+                try:
+                    self.n.node[key].features['_connections']+=1;
+                except KeyError:
+                    self.n.node[key].features['_connections']=1;
+                #annotate self
+                for pair_key in pair_keys:
+                    try:
+                        self.n.node[pair_key].features['_connections']+=1;
+                    except KeyError:
+                        self.n.node[pair_key].features['_connections']=1;
+        for key, data in self.n.nodes(data=True):
+            try:
+                data.features['_connections'];
+            except KeyError:
+                data.features['_connections']=0;
+        return;
+    def annotate_to_keep():
+        """annotate whether or not a node is to be kept, the rules are :
+            1. if marked t_source not other, is_ff_ or has core pathway info then keep.
+            2. if connected to two or more nodes then keep
+            3. otherwised marked for delete"""
+        for key, data in self.n.nodes(data=True):
+            flag=0;
+            try:
+                if data.features['t_is_ff_from_list']=='false':
+                    if data.features['t_source']=='other':
+                        if data.features['tPathwayInfo']=='none':
+                            flag=1;
+            except KeyError:
+                print "There is an error at pruning node ",key,"deleting it anyway"
+                flag=1;
+        return;
+    def prune():
+        """go through nodes delete those marked to be deleted while keeping their keys"""
+        try:
+            self.deleted;
+        except:
+            self.deleted=[];
+        for key, data in self.n.nodes():
+            try:
+                if data.features["_tobedeleted"]==True:
+                    self.n.remove_node(key);
+                    deleted.append[key];
+            except:
+                continue;
+        return;
     def closed_dna(self,domain='source'):
         # add transcription edges
         print "trying to build motifmap", self.n
@@ -276,6 +332,7 @@ class crick_tester(object):
                 temp=[];
                 continue;
             temp.append(line.strip().lower());
+        temp.append('none');
         return
     
     def annotate_pathway (self):
@@ -290,7 +347,11 @@ class crick_tester(object):
                         print "found a feature ", lookup, data.features["name"].lower();
                         annote.append(key);
                         break;
-            data.features["tPathwayInfo"]=annote;
+            if annote:
+                data.features["tPathwayInfo"]=annote;
+            else:
+                data.features["tPathwayInfo"]=['none'];
+
             #print "going through", data.features["name"]
             #if data.features["tPathwayInfo"]:
             #    print "annotation:", data.features["tPathwayInfo"];
