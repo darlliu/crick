@@ -237,11 +237,13 @@ class crick_tester(object):
         self.pickle(self.name+"_opendna")
         self.exportfig(self.name+'_open_dna_'+domain)
         return
-    def annotate_connections():
+    def annotate_connections(self):
         """go through each node and annotate its connections, inflating its size at the same time,
         also, for connected nodes count the number of nodes that connects to them,
         as of now we assume directed edges such that no redundant edges are produced"""
         for keys in self.n.edge.keys():
+            if type(keys)!=type(['']):
+                keys=[keys];
             for key in keys:
                 if len(self.n.edge[key])==0: continue;
                 else:
@@ -262,7 +264,7 @@ class crick_tester(object):
             except KeyError:
                 data.features['_connections']=0;
         return;
-    def annotate_to_keep():
+    def annotate_to_keep(self):
         """annotate whether or not a node is to be kept, the rules are :
             1. if marked t_source not other, is_ff_ or has core pathway info then keep.
             2. if connected to two or more nodes then keep
@@ -272,19 +274,21 @@ class crick_tester(object):
             try:
                 if data.features['t_is_ff_from_list']=='false':
                     if data.features['t_source']=='other':
-                        if data.features['tPathwayInfo']=='none':
+                        if data.features['tPathwayInfo']==['none']:
                             flag=1;
             except KeyError:
                 print "There is an error at pruning node ",key,"deleting it anyway"
                 flag=1;
+            if flag:
+                data.features['_tobedeleted']==True;
         return;
-    def prune():
+    def prune(self):
         """go through nodes delete those marked to be deleted while keeping their keys"""
         try:
             self.deleted;
         except:
             self.deleted=[];
-        for key, data in self.n.nodes():
+        for key, data in self.n.nodes(data=True):
             try:
                 if data.features["_tobedeleted"]==True:
                     self.n.remove_node(key);
@@ -318,7 +322,7 @@ class crick_tester(object):
         self.pickle(self.name+"closed_pathway");
         self.exportfig(self.name+'_closed_pathway');
         return
-    
+ 
     def get_pathway_source(self):
         f=open("coregenes.list",'r');
         self.pathwayinfo={};
@@ -332,7 +336,6 @@ class crick_tester(object):
                 temp=[];
                 continue;
             temp.append(line.strip().lower());
-        temp.append('none');
         return
     
     def annotate_pathway (self):
