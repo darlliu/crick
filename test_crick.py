@@ -64,6 +64,47 @@ class david_collection(object):
         for sample in self.samples:
             print sample.name, len(sample.probes), sample.probes[0],len(sample.genes), sample.genes[0];
         return
+
+class probeset_lookup(object):
+    def __init__(self):
+        self.lookup={};
+        self.db=[];
+    def load(self,name="probeset_data.csv"):
+        f=open(name,'r');
+        #raise exception if file not found
+        for line in f:
+            if line[0]=='#':continue;
+            else:
+                temp=line.split('\t');
+                for item in temp:
+                    self.lookup[item]=temp.index[item];
+                    break;
+        for line in f:
+            self.db.append(line.split('\t'));
+        f.close();
+        print self.lookup;
+        return
+    def pickle(self):
+        f=open("probeset.db",'wb');
+        cPickle.dump(self,f);
+        f.close();
+    def unpickle(self):
+        f=open("probeset.db","rb");
+        self=cPickle.load(f);
+        f.close();
+        return self;
+    def generate_probe_to_uniprot(self):
+        """generate two way lookup table"""
+    def generate_swissprot_to_probe(self):
+        out={};
+        for temp in self.db:
+            idfrom=self.lookup["SwissProt"];
+            idto=self.lookup["Probe Set ID"];
+            keys=temp[idfrom];
+            for key in keys.split('///'):
+                out[key]=temp[idto];
+        return out;
+
 class crick_tester(object):
     def __init__(self):
         self.n=network.CrickNetwork(species=species.mm9);
@@ -93,13 +134,23 @@ class crick_tester(object):
             try:
                 lookup=data.features["mylookup"];
             except KeyError:
-                lookup=data.features["accessions"][0];
+                lookup=data.features[key];
             try:
-                data.features["probe_refid"]=varin.probes[varin.genes.index(lookup)];
+                data.features["probe_refid"]=varin[lookup];
             except ValueError:
                 continue;
-
         return;
+    #def load_refid(self,varin):
+    #    """load in refids for nodes"""
+    #    for item, data in self.n.nodes(data=True):
+    #        try:
+    #            lookup=data.features["mylookup"];
+    #        except KeyError:
+    #            lookup=data.features["id"];
+    #        try:
+    #            data.features["probe_refid"]=varin.probes[varin.genes.index(lookup)];
+    #        except ValueError:
+    #            continue;
     def pickle(self,name="default"):
         fout=open(self.path+name+".pkl",'wb');
         gout=open("loaded.order",'wa');
@@ -276,16 +327,16 @@ class crick_tester(object):
                     continue;
             numbers=['C' for i in xrange(len(chartlabels)-1)]; 
             if len(chartlabels)==1:
-                data.features["tChartUrl"]=template.format("2",chartlabels[0]+"|None",chartcolors[0],"FFFFFF");
-                data.features["_CustomGraphics"]=template2.format("2",chartcolors[0],"FFFFFF");
+                data.features["tChartUrl"]=self.wrap(template.format("2",chartlabels[0]+"|None",chartcolors[0],"FFFFFF"));
+                data.features["_CustomGraphics"]=self.wrap(template2.format("2",chartcolors[0],"FFFFFF"));
                 continue;
             else:
-                data.features["tChartUrl"]=template.format(\
+                data.features["tChartUrl"]=self.wrap(template.format(\
                         "".join(numbers), '|'.join(chartlabels),chartcolors[0],'|'.join(chartcolors[1:])\
-                        );
-                data.features["_CustomGraphics"]=template2.format(\
+                        ));
+                data.features["_CustomGraphics"]=self.wrap(template2.format(\
                         "".join(numbers), chartcolors[0],'|'.join(chartcolors[1:])\
-                        );
+                        ));
                 print data.features["tChartUrl"];
         return
     
@@ -303,7 +354,7 @@ class crick_tester(object):
         """check if the gene is in a given gene list"""
         
         return;
-    def annotate_cybert_results(self):
+    def annotate_cybert_results(self,trans):
         f=gzip.open("means.gz","rb");
         means=pickle.load(f);
         g=gzip.open("bsds.gz","rb");
@@ -334,8 +385,11 @@ class crick_tester(object):
         r1=[str(entry) for entry in bsds];
         r11=[str(entry) for entry in sds];
         r2=[str(entry) for entry in means];
-        return template.format(",".join(r1),",".join(r11),",".join(r2),'|'.join(labels),name);
-
+        return self.wrap(template.format(",".join(r1),",".join(r11),",".join(r2),'|'.join(labels),name));
+    
+    def wrap(self,url):
+        """wraps url in img link"""
+        return """<img src="{0}" alt="Plots"/>""".format(url);
 
     def annotate_tf_from_descriptions(self,keywords=\
             ["transcription","core","factor","binding","regulat","polymerase"\
@@ -375,10 +429,12 @@ def main():
     c=david_collection();
     c.load();
     c.printinfo();
+    e=probeset_lookup();
+    e.load();
+    f=e.generate_swissprot_to_probe();
     for d in networks:
         d.get_pathway_source();
-        for sample in c.samples:
-            d.load_refid(sample);
+        d.load_refid(f);
         print len(d.n.nodes()), len(d.n.edges())
         #only need to load once
         #d.open_ppi();
@@ -386,7 +442,7 @@ def main():
         d.annotate_pathway();
         d.annotate_tf_from_descriptions();
         d.draw_pathway_chart();
-        d.annotate_cybert_results();
+        d.annotate_cybert_results(f);
         d.exportfig(d.name+"_annoated_fixed");
         d.pickle(d.name+"_open_dna_fix")
     #d=d.unpickle('/home/yul13/tmp/ORS_2_networkloaded.pkl')
