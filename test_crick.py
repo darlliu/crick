@@ -113,6 +113,19 @@ class crick_tester(object):
         self.descriptions={};
         self.pathwayinfo={};
         self.deleted=[];
+    def update(self,another):
+        assert (type(self)==type(another));
+        print "attempting combining", another.name 
+        self.n.copy_network(another.n);
+        self.name="combined";
+        self.path=another.path;
+        self.descriptions.update(another.descriptions);
+        self.pathwayinfo.update(another.pathwayinfo);
+        self.deleted=self.deleted+another.deleted;
+    def combine(self,testers):
+        for tester in testers:
+            self.update(tester);
+        return;
     def load(self, varin):
         """load from a david list"""
         self.name=varin.name+'_network'
@@ -248,22 +261,46 @@ class crick_tester(object):
                 if len(self.n.edge[key])==0: continue;
                 else:
                     pair_keys=self.n.edge[key].keys();
+                    if type(pair_keys)!=type(['']):
+                        pair_keys=[pair_keys];
                 try:
-                    self.n.node[key].features['_connections']+=1;
+                    self.n.node[key].features['_connections']+=len(pair_keys);
                 except KeyError:
-                    self.n.node[key].features['_connections']=1;
+                    self.n.node[key].features['_connections']=len(pair_keys);
                 #annotate self
                 for pair_key in pair_keys:
                     try:
                         self.n.node[pair_key].features['_connections']+=1;
+                        self.n.node[key].features['connected_nodes'].append(pair_key);
+                        self.n.node[pair_key].features['connected_nodes'].append(key);
                     except KeyError:
                         self.n.node[pair_key].features['_connections']=1;
+                        self.n.node[key].features['connected_nodes']=[pair_key];
+                        self.n.node[pair_key].features['connected_nodes']=[key];
         for key, data in self.n.nodes(data=True):
             try:
                 data.features['_connections'];
             except KeyError:
                 data.features['_connections']=0;
         return;
+    def propagate_pathway_info(self):
+        """propagate the annotation of pathway information"""
+        def do_propagate(ID):
+            try:
+                children=self.n.node[ID].features['connected_nodes'];
+            except KeyError:
+                return ID;
+            for child in children:
+                try:
+                    self.n.node[child].features['tPathwayInfo']|=self.n.node[ID].features['tPathwayInfo'];
+                except KeyError:
+                    return ID;
+                return do_propagate(ID);
+        for key,data in self.n.nodes(data=True):
+            if len(data.features['tPathwayInfo'])==1 and data.features['tPathwayInfo']!=['none']:
+                do_propagate(key);
+        return
+
     def annotate_to_keep(self):
         """annotate whether or not a node is to be kept, the rules are :
             1. if marked t_source not other, is_ff_ or has core pathway info then keep.
@@ -274,7 +311,7 @@ class crick_tester(object):
             try:
                 if data.features['t_is_ff_from_list']=='false':
                     if data.features['t_source']=='other':
-                        if data.features['tPathwayInfo']==['none']:
+                        if data.features['tPathwayInfo']==set(['none']):
                             flag=1;
             except KeyError:
                 print "There is an error at pruning node ",key,"deleting it anyway"
@@ -351,9 +388,9 @@ class crick_tester(object):
                         annote.append(key);
                         break;
             if annote:
-                data.features["tPathwayInfo"]=annote;
+                data.features["tPathwayInfo"]=set(annote);
             else:
-                data.features["tPathwayInfo"]=['none'];
+                data.features["tPathwayInfo"]=set(['none']);
 
             #print "going through", data.features["name"]
             #if data.features["tPathwayInfo"]:
@@ -476,6 +513,20 @@ class crick_tester(object):
                         item.features["t_is_ff_from_list"]="false";
                 except KeyError:
                     item.features["t_is_ff_from_list"]="false";
+    def do_annotation_routine(self):
+        self.get_pathway_source();
+        self.annotate_other_nodes();
+        self.annotate_pathway();
+        self.annotate_tf_from_descriptions();
+        self.annotate_connections();
+        self.annotate_to_keep();
+        self.prune();
+        self.propagate_pathway_info();
+        self.annotate_cybert_results();
+        self.draw_pathway_chart();
+        
+        
+
 def load_all_crick_objects(basedir='/home/yul13/tmp/load/'):
     cricks=[];
     for name in os.listdir(basedir):
