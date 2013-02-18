@@ -306,6 +306,8 @@ class crick_tester(object):
         means=pickle.load(f);
         g=gzip.open("bsds.gz","rb");
         bsds=pickle.load(g);
+        h=gzip.open("sds.gz","rb");
+        sds=pickle.load(h);
         #h=open("labels.lb","rb");
         #labels=pickle.load(h);
         labels=['MX','ORS','DF','DP','ML']
@@ -313,9 +315,10 @@ class crick_tester(object):
             try:
                 mean=means[data.features["probe_refid"]];
                 bsd=bsds[data.features["probe_refid"]];
+                sd=sds[data.features["probe_refid"]];
 #                print "got results from cybert", len(mean), len(bsd)
                 data.features["cybert_means"]=mean;
-                am=self.draw_hist(mean,bsd,labels);
+                am=self.draw_hist(mean,bsd,sd,labels);
                 data.features["cybert_sd_bayes"]=bsd;
                 data.features["cybert_plot"]=am;
             except:
@@ -323,12 +326,13 @@ class crick_tester(object):
                 data.features["cybert_sd_bayes"]=[];
         
         return
-    def draw_hist(self,means,bsds,labels,name="CyberT%20Means%20and%20Bayesian%20SD"):
+    def draw_hist(self,means,bsds,sds,labels,name="CyberT%20Means%20and%20Bayesian%20SD"):
         """draw a double layer histogram given data"""
-        template="https://chart.googleapis.com/chart?cht=bvs&chs=400x400&chtt={3}&chd=t:{0}|{1}&chdl=bsd|mean&chco=4D89F9,C6D9FD&chxt=x,y&chxl=0:|{2}&chbh=a&&chds=a"
+        template="https://chart.googleapis.com/chart?cht=bvs&chs=400x400&chtt={4}&chd=t:{0}|{1}|{2}&chdl=bsd|sd|mean&chco=4D89F9,C6D9FD,4DD622&chxt=x,y&chxl=0:|{3}&chbh=a&&chds=a"
         r1=[str(entry) for entry in bsds];
+        r11=[str(entry) for entry in sds];
         r2=[str(entry) for entry in means];
-        return template.format(",".join(r1),",".join(r2),'|'.join(labels),name);
+        return template.format(",".join(r1),",".join(r11),",".join(r2),'|'.join(labels),name);
 
 
     def annotate_tf_from_descriptions(self,keywords=\
