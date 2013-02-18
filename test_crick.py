@@ -77,8 +77,8 @@ class probeset_lookup(object):
             else:
                 temp=line.split('\t');
                 for item in temp:
-                    self.lookup[item]=temp.index[item];
-                    break;
+                    self.lookup[item]=temp.index(item);
+                break;
         for line in f:
             self.db.append(line.split('\t'));
         f.close();
@@ -128,29 +128,35 @@ class crick_tester(object):
                     data.features["t_david_description"]=' '.join(varin.descriptions[idx]);
         self.pickle(self.name+'loaded');
         return;
+    def load_refid2(self,varin):
+        """load in refids for nodes"""
+        for item, data in self.n.nodes(data=True):
+            try:
+                lookup=data.features["mylookup"];
+                try:
+                    data.features["probe_refid"]=varin[lookup];
+                    print "added ref: ", varin[lookup]
+                except KeyError:
+                    continue;
+            except KeyError:
+                lookup=data.features["accessions"];
+                try:
+                    for key in lookup:
+                        data.features["probe_refid"]=varin[key];
+                except KeyError:
+                    continue;
+        return;
     def load_refid(self,varin):
         """load in refids for nodes"""
         for item, data in self.n.nodes(data=True):
             try:
                 lookup=data.features["mylookup"];
             except KeyError:
-                lookup=data.features[key];
+                lookup=item;
             try:
-                data.features["probe_refid"]=varin[lookup];
+                data.features["probe_refid"]=varin.probes[varin.genes.index(lookup)];
             except ValueError:
                 continue;
-        return;
-    #def load_refid(self,varin):
-    #    """load in refids for nodes"""
-    #    for item, data in self.n.nodes(data=True):
-    #        try:
-    #            lookup=data.features["mylookup"];
-    #        except KeyError:
-    #            lookup=data.features["id"];
-    #        try:
-    #            data.features["probe_refid"]=varin.probes[varin.genes.index(lookup)];
-    #        except ValueError:
-    #            continue;
     def pickle(self,name="default"):
         fout=open(self.path+name+".pkl",'wb');
         gout=open("loaded.order",'wa');
@@ -293,8 +299,8 @@ class crick_tester(object):
     def draw_pathway_chart(self):
         """Simple chart drawing method to annoate pathway source for each node"""
         #template="http://chart.googleapis.com/chart?cht=p&chs=400x200&chd=t:{0}&chl={1}&chtt=Pathway%20Involved&chco={2}"
-        template="http://chart.googleapis.com/chart?cht=pc&chtt=Pathway%20Tissue%20info&chs=400x400&chd=s:C,{0}&chdl={1}&chco={2}|FFFFFF,{3}|FFFFFF"
-        template2="http://chart.googleapis.com/chart?cht=pc&chs=400x400&chd=s:C,{0}&chco={1}|FFFFFF,{2}|FFFFFF"
+        template="http://chart.googleapis.com/chart?cht=pc&chtt=Pathway%20Tissue%20info&chs=200x200&chd=s:C,{0}&chdl={1}&chco={2}|FFFFFF,{3}|FFFFFF"
+        template2="http://chart.googleapis.com/chart?cht=pc&chs=200x200&chd=s:C,{0}&chco={1}|FFFFFF,{2}|FFFFFF"
         labels=self.pathwayinfo.keys();
         labels2=['dp','df','ors','mx','ml','other']
         colors=['004444','FF0000','00FF00','0000FF','FF00FF','FFFF00','00FFFF','880088','008888'];
@@ -328,15 +334,15 @@ class crick_tester(object):
             numbers=['C' for i in xrange(len(chartlabels)-1)]; 
             if len(chartlabels)==1:
                 data.features["tChartUrl"]=self.wrap(template.format("2",chartlabels[0]+"|None",chartcolors[0],"FFFFFF"));
-                data.features["_CustomGraphics"]=self.wrap(template2.format("2",chartcolors[0],"FFFFFF"));
+                data.features["_CustomGraphics"]=template2.format("2",chartcolors[0],"FFFFFF");
                 continue;
             else:
                 data.features["tChartUrl"]=self.wrap(template.format(\
                         "".join(numbers), '|'.join(chartlabels),chartcolors[0],'|'.join(chartcolors[1:])\
                         ));
-                data.features["_CustomGraphics"]=self.wrap(template2.format(\
+                data.features["_CustomGraphics"]=template2.format(\
                         "".join(numbers), chartcolors[0],'|'.join(chartcolors[1:])\
-                        ));
+                        );
                 print data.features["tChartUrl"];
         return
     
@@ -354,7 +360,7 @@ class crick_tester(object):
         """check if the gene is in a given gene list"""
         
         return;
-    def annotate_cybert_results(self,trans):
+    def annotate_cybert_results(self):
         f=gzip.open("means.gz","rb");
         means=pickle.load(f);
         g=gzip.open("bsds.gz","rb");
@@ -381,7 +387,7 @@ class crick_tester(object):
         return
     def draw_hist(self,means,bsds,sds,labels,name="CyberT%20Means%20and%20Bayesian%20SD"):
         """draw a double layer histogram given data"""
-        template="https://chart.googleapis.com/chart?cht=bvs&chs=400x400&chtt={4}&chd=t:{0}|{1}|{2}&chdl=bsd|sd|mean&chco=4D89F9,C6D9FD,4DD622&chxt=x,y&chxl=0:|{3}&chbh=a&&chds=a"
+        template="https://chart.googleapis.com/chart?cht=bvs&chs=300x200&chtt={4}&chd=t:{0}|{1}|{2}&chdl=bsd|sd|mean&chco=4D89F9,C6D9FD,4DD622&chxt=x,y&chxl=0:|{3}&chbh=a&&chds=a"
         r1=[str(entry) for entry in bsds];
         r11=[str(entry) for entry in sds];
         r2=[str(entry) for entry in means];
@@ -389,7 +395,7 @@ class crick_tester(object):
     
     def wrap(self,url):
         """wraps url in img link"""
-        return """<img src="{0}" alt="Plots"/>""".format(url);
+        return """<img src="{0}"></img>""".format(url);
 
     def annotate_tf_from_descriptions(self,keywords=\
             ["transcription","core","factor","binding","regulat","polymerase"\
@@ -423,28 +429,34 @@ def initialize_all_crick_objects():
         d.load(sample);
         cricks.append(d);
     return cricks;
-def main():
-    networks=load_all_crick_objects();
-    #networks=initialize_all_crick_objects();
+def load_refids(cricks):
     c=david_collection();
     c.load();
     c.printinfo();
     e=probeset_lookup();
     e.load();
     f=e.generate_swissprot_to_probe();
+    for d in cricks:
+        d.load_refid2(f);
+        for sample in c.samples:
+            d.load_refid(sample);
+    return cricks;
+
+def main():
+    #networks=initialize_all_crick_objects();
+    networks=load_all_crick_objects();
+    networks=load_refids(networks);
     for d in networks:
         d.get_pathway_source();
-        d.load_refid(f);
         print len(d.n.nodes()), len(d.n.edges())
         #only need to load once
         #d.open_ppi();
-        d.open_dna();
         d.annotate_pathway();
         d.annotate_tf_from_descriptions();
         d.draw_pathway_chart();
-        d.annotate_cybert_results(f);
-        d.exportfig(d.name+"_annoated_fixed");
-        d.pickle(d.name+"_open_dna_fix")
+        d.annotate_cybert_results();
+        d.exportfig(d.name+"_annoated_fixed_2");
+        d.pickle(d.name+"_fix2")
     #d=d.unpickle('/home/yul13/tmp/ORS_2_networkloaded.pkl')
     #d=d.unpickle()
     #d.annotate_pathway();
