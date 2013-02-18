@@ -93,7 +93,7 @@ class crick_tester(object):
             try:
                 lookup=data.features["mylookup"];
             except KeyError:
-                lookup=data.features["id"];
+                lookup=data.features["accessions"][0];
             try:
                 data.features["probe_refid"]=varin.probes[varin.genes.index(lookup)];
             except ValueError:
@@ -162,12 +162,12 @@ class crick_tester(object):
         self.exportfig(self.name+'_openppi');
 # a simple closed ppi network
         return
-    def open_dna(self,domain='target'):
+    def open_dna(self,domain='source'):
         # add transcription edges
         print "trying to build motifmap", self.n
         mfbuilder=MotifMapEdgeBuilder(self.n);
-        mfbuilder.build_network(upstream = 2000,
-                downstream=2000,
+        mfbuilder.build_network(upstream = 3000,
+                downstream=3000,
                 bbls=2,
                 exon=0,
                 fdr=0.4,
@@ -183,8 +183,8 @@ class crick_tester(object):
         # add transcription edges
         print "trying to build motifmap", self.n
         mfbuilder=MotifMapEdgeBuilder(self.n);
-        mfbuilder.build_network(upstream = 2000,
-                downstream=2000,
+        mfbuilder.build_network(upstream = 4000,
+                downstream=4000,
                 bbls=1.5,
                 exon=0,
                 fdr=0.5,
@@ -382,13 +382,13 @@ def main():
         print len(d.n.nodes()), len(d.n.edges())
         #only need to load once
         #d.open_ppi();
-        #d.closed_dna();
+        d.open_dna();
         d.annotate_pathway();
         d.annotate_tf_from_descriptions();
         d.draw_pathway_chart();
         d.annotate_cybert_results();
         d.exportfig(d.name+"_annoated_fixed");
-        d.pickle(d.name+"_initial_fix")
+        d.pickle(d.name+"_open_dna_fix")
     #d=d.unpickle('/home/yul13/tmp/ORS_2_networkloaded.pkl')
     #d=d.unpickle()
     #d.annotate_pathway();
