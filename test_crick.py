@@ -92,11 +92,13 @@ class crick_tester(object):
         for item, data in self.n.nodes(data=True):
             try:
                 lookup=data.features["mylookup"];
+            except KeyError:
+                lookup=data.features["id"];
+            try:
                 data.features["probe_refid"]=varin.probes[varin.genes.index(lookup)];
             except ValueError:
                 continue;
-            except KeyError:
-                continue;
+
         return;
     def pickle(self,name="default"):
         fout=open(self.path+name+".pkl",'wb');
