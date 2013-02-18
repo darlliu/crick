@@ -62,7 +62,7 @@ class david_collection(object):
         return
     def printinfo(self):
         for sample in self.samples:
-            print sample.name, len(sample.genes), sample.genes[0],sample.descriptions;
+            print sample.name, len(sample.probes), sample.probes[0],len(sample.genes), sample.genes[0];
         return
 class crick_tester(object):
     def __init__(self):
@@ -93,8 +93,10 @@ class crick_tester(object):
             try:
                 lookup=data.features["mylookup"];
                 data.features["probe_refid"]=varin.probes[varin.genes.index(lookup)];
+            except ValueError:
+                continue;
             except KeyError:
-                data.features["probe_refid"]="";
+                continue;
         return;
     def pickle(self,name="default"):
         fout=open(self.path+name+".pkl",'wb');
@@ -243,7 +245,7 @@ class crick_tester(object):
         labels=self.pathwayinfo.keys();
         labels2=['dp','df','ors','mx','ml','other']
         colors=['004444','FF0000','00FF00','0000FF','FF00FF','FFFF00','00FFFF','880088','008888'];
-        colort=['222222','002222','222200','002200','000022','005500'];
+        colort=['882222','884422','882244','882266','880022','005050'];
 
         if len(colors)<len(labels):
             raise IndexError;
@@ -304,14 +306,16 @@ class crick_tester(object):
         means=pickle.load(f);
         g=gzip.open("bsds.gz","rb");
         bsds=pickle.load(g);
-        h=open("labels.lb","rb");
-        labels=pickle.load(h);
+        #h=open("labels.lb","rb");
+        #labels=pickle.load(h);
+        labels=['MX','ORS','DF','DP','ML']
         for node, data in self.n.nodes(data=True):
             try:
                 mean=means[data.features["probe_refid"]];
                 bsd=bsds[data.features["probe_refid"]];
+#                print "got results from cybert", len(mean), len(bsd)
                 data.features["cybert_means"]=mean;
-                am=self.draw_hist(mean,bsds,labels);
+                am=self.draw_hist(mean,bsd,labels);
                 data.features["cybert_sd_bayes"]=bsd;
                 data.features["cybert_plot"]=am;
             except:
@@ -342,7 +346,7 @@ class crick_tester(object):
                         item.features["t_is_ff_from_list"]="false";
                 except KeyError:
                     item.features["t_is_ff_from_list"]="false";
-def load_all_crick_objects(basedir='/home/yul13/tmp/'):
+def load_all_crick_objects(basedir='/home/yul13/tmp/load/'):
     cricks=[];
     for name in os.listdir(basedir):
         temp=crick_tester();
@@ -363,17 +367,22 @@ def main():
     networks=load_all_crick_objects();
     #networks=initialize_all_crick_objects();
     c=david_collection();
+    c.load();
+    c.printinfo();
     for d in networks:
         d.get_pathway_source();
-        d.load_refid(c.samples[0]);
+        for sample in c.samples:
+            d.load_refid(sample);
+        print len(d.n.nodes()), len(d.n.edges())
         #only need to load once
         #d.open_ppi();
         #d.closed_dna();
         d.annotate_pathway();
         d.annotate_tf_from_descriptions();
         d.draw_pathway_chart();
-        d.exportfig(d.name+"_annoated");
-        d.pickle(d.name+"_initial_annotation")
+        d.annotate_cybert_results();
+        d.exportfig(d.name+"_annoated_fixed");
+        d.pickle(d.name+"_initial_fix")
     #d=d.unpickle('/home/yul13/tmp/ORS_2_networkloaded.pkl')
     #d=d.unpickle()
     #d.annotate_pathway();
