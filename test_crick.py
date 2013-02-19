@@ -112,7 +112,6 @@ class crick_tester(object):
         self.path='/home/yul13/tmp/'
         self.descriptions={};
         self.pathwayinfo={};
-        self.deleted=[];
     def update(self,another):
         assert (type(self)==type(another));
         print "attempting combining", another.name 
@@ -121,7 +120,6 @@ class crick_tester(object):
         self.path=another.path;
         self.descriptions.update(another.descriptions);
         self.pathwayinfo.update(another.pathwayinfo);
-        self.deleted=self.deleted+another.deleted;
     def combine(self,testers):
         for tester in testers:
             self.update(tester);
@@ -275,33 +273,43 @@ class crick_tester(object):
                         self.n.node[pair_key].features['connected_nodes'].append(key);
                     except KeyError:
                         self.n.node[pair_key].features['_connections']=1;
-                        self.n.node[key].features['connected_nodes']=[pair_key];
                         self.n.node[pair_key].features['connected_nodes']=[key];
         for key, data in self.n.nodes(data=True):
             try:
                 data.features['_connections'];
             except KeyError:
                 data.features['_connections']=0;
+            data.features['_t_inflate']=50+1*data.features['_connections'];
+            if data.features['_t_inflate']>150:
+                data.features['_t_inflate']=150;
         return;
     def propagate_pathway_info(self):
         """propagate the annotation of pathway information"""
         def do_propagate(ID):
+            print "propagating",ID
             try:
                 children=self.n.node[ID].features['connected_nodes'];
+                self.n.node[ID].features['_noreturn']=True;
             except KeyError:
                 return ID;
             for child in children:
+                print "now at child", child
                 try:
                     self.n.node[child].features['tPathwayInfo']|=self.n.node[ID].features['tPathwayInfo'];
                 except KeyError:
                     return ID;
-                return do_propagate(ID);
+                if self.n.node[child].features['_noreturn']==True:
+                    return ID;
+                else:
+                    return do_propagate(child);
+        for key,data in self.n.nodes(data=True):
+            data.features['_noreturn']=False;
         for key,data in self.n.nodes(data=True):
             if len(data.features['tPathwayInfo'])==1 and data.features['tPathwayInfo']!=['none']:
                 do_propagate(key);
         return
 
-    def annotate_to_keep(self):
+    def annotate_to_keep(self,strict=True,depth_limit=1):
         """annotate whether or not a node is to be kept, the rules are :
             1. if marked t_source not other, is_ff_ or has core pathway info then keep.
             2. if connected to two or more nodes then keep
@@ -310,14 +318,20 @@ class crick_tester(object):
             flag=0;
             try:
                 if data.features['t_is_ff_from_list']=='false':
-                    if data.features['t_source']=='other':
-                        if data.features['tPathwayInfo']==set(['none']):
-                            flag=1;
+                    if data.features['tPathwayInfo']==set(['none']):
+                        if data.features['_connections']<=depth_limit:
+                            if strict:
+                                if data.features['t_source']=='other':
+                                    flag=1;
+                                else:
+                                    continue;
+                            else:
+                                flag=1;
             except KeyError:
                 print "There is an error at pruning node ",key,"deleting it anyway"
                 flag=1;
             if flag:
-                data.features['_tobedeleted']==True;
+                data.features['_tobedeleted']=True;
         return;
     def prune(self):
         """go through nodes delete those marked to be deleted while keeping their keys"""
@@ -327,10 +341,12 @@ class crick_tester(object):
             self.deleted=[];
         for key, data in self.n.nodes(data=True):
             try:
+                print "attempting delete routine", key
                 if data.features["_tobedeleted"]==True:
+                    print "deleted unneeded node", key
                     self.n.remove_node(key);
-                    deleted.append[key];
-            except:
+                    self.deleted.append(key);
+            except KeyError:
                 continue;
         return;
     def closed_dna(self,domain='source'):
@@ -561,17 +577,11 @@ def main():
     #networks=initialize_all_crick_objects();
     networks=load_all_crick_objects();
     networks=load_refids(networks);
-    for d in networks:
-        d.get_pathway_source();
-        print len(d.n.nodes()), len(d.n.edges())
-        #only need to load once
-        #d.open_ppi();
-        d.annotate_pathway();
-        d.annotate_tf_from_descriptions();
-        d.draw_pathway_chart();
-        d.annotate_cybert_results();
-        d.exportfig(d.name+"_annoated_fixed_2");
-        d.pickle(d.name+"_fix2")
+    combined=crick_tester();
+    combined.combine(networks);
+    combined.do_annotation_routine();
+    combined.exportfig(combined.name+"combined_temp");
+    combined.pickle(combined.name+"combined_temp")
     #d=d.unpickle('/home/yul13/tmp/ORS_2_networkloaded.pkl')
     #d=d.unpickle()
     #d.annotate_pathway();
@@ -582,5 +592,4 @@ def main():
     #d.closed_dna();
     #d.cleanup(True);
     #print d.n
-main();
 
