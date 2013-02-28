@@ -1,5 +1,10 @@
 *.py[cod]
 .*.sw*
+*.csv
+*.txt
+*.list
+*.db
+*.pkl
 .sw*
 gmon.out
 core.*

@@ -1,17 +1,17 @@
-#$ -N haircycle
+#$ -N Testing
 #$ -cwd
-#$ -q benzene.q
+#$ -j y
 #$ -S /bin/bash
+#$ -q benzene.q
 #$ -o /home/yul13/tmp/clusteroutput.txt
 #$ -e /home/yul13/tmp/clustererror.txt
-#$ -l mem_free_consum=1M
+#$ -p myproject.p
 
 date
-source ~/codebase/crick/crick_centos64-py26.profile
 echo $HOST
 module load gcc
-module load python
 module load ics-default
+source /home/yul13/codebase/profile.sh
 echo checking current machine
 uname -a
 which gcc
