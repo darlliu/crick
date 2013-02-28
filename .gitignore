@@ -5,6 +5,8 @@
 *.list
 *.db
 *.pkl
+*.gz
+*.zip
 .sw*
 gmon.out
 core.*
