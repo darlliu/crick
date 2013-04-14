@@ -2,6 +2,7 @@
 .*.sw*
 *.csv
 *.txt
+*.xls
 *.list
 *.db
 *.pkl

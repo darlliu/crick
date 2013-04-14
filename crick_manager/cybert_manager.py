@@ -50,7 +50,12 @@ class cybert_manager(object):
         return
 
     def gen_ord(self):
-        pass;
+        self.RUNNAMES=[self.rawname.strip(".xls")]
+        self.RUNS=[1];
+        self.ORDER=[["C0" for i in xrange(self.numsam/2)]+["E0" for i in xrange(self.numsam/2)]]
+        print self.RUNNAMES, self.ORDER, self.RUNS
+        return
+
 
     def load_ord(self,name):
         f=open("order.list","r")
@@ -63,9 +68,10 @@ class cybert_manager(object):
                 self.ORDER.append(line.strip().split())
                 self.RUNS.append(int(line.strip().split()[-1].strip("E").strip("C")))
             i+=1;
-        return;
-        print self.RUNNAMES, self.ORDER, self.RUNS
+
         #now read this order for pairwise comparison
+        print self.RUNNAMES, self.ORDER, self.RUNS
+        return;
 
     def loadf(self):
         f=open(self.rawname,"r")
@@ -90,6 +96,7 @@ class cybert_manager(object):
         """Make individual CyberT files."""
         controls=[i for i in xrange(len(self.order)) if self.order[i]=="C"+str(run_num)]
         exps=[i for i in xrange(len(self.order)) if self.order[i]=="E"+str(run_num)]
+        print controls, exps
         g=open(str(run_num)+".csv","w")
         g.write("\t".join(["ProbeID"]+[
             self.sams[i] for i in controls+exps
