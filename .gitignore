@@ -1,7 +1,10 @@
 *.py[cod]
 .*.sw*
 *.csv
+*.R
+*.sge
 *.txt
+jobs.sh
 *.xls
 *.list
 *.db
