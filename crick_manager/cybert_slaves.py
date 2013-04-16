@@ -3,106 +3,96 @@
 import copy
 import cPickle as pickle
 import numpy as np
+from hashlib import md5
 import matplotlib.pyplot as plt
 import sqlite3 as sql
+import zlib
 DBPATH="/home/yul13/data/databases/cybert.db"
-LABELS="(Sample TEXT, ProbeID INT, GeneSym TEXT, GeneDescription TEXT,GeneID TEXT, ReferenceID TEXT,\
-        Mean REAL, SD REAL, BayesSD REAL, pValDifferential REAL, Bonferonni REAL, BH REAL, DF INT,\
-        BayesDF INT, UID INT, RawINFO BLOB)";
+LABELS="(Sample TEXT, ProbeID INT, GeneSym TEXT, GeneDescription TEXT,UniprotID TEXT, Emsemble TEXT,\
+        Mean REAL, SD REAL, BayesSD REAL, pValDifferential REAL, Bonferonni REAL, BH REAL, REP INT,\
+        BayesDF INT, RefSum INT, RawINFO TEXT)";
 
 
 class cybert_entry(object):
     def __init__(self):
+        self.samplename=""
         self.refid="";
         self.geneid="";
-        self.genedecription="";
+        self.uniprot="";
         self.genesym="";
-        self.refseq="";
-        self.mean=[];
-        self.sd=[];
-        self.bsd=[];
-        self.uid=0;
-        self.bh=0;
-        self.bf=0;
-        self.df=0;
-        self.dfb=0;
-        self.pval=[];
+        self.refseq=0;
+        #refseq is a unique identifier for each probe/combination of samples
+        self.mean=0;self.sd=0;self.bsd=0;
+        self.bh=0;self.bf=0;self.df=0;self.dfb=0;self.pval=0
         self.raw={};
-        #here we used number as uid
+        #here we used number as uid_by_cutoff
 
     def serialize(self,cur,table,sample_name):
         """serialize into a database given the cursor"""
         nums=','.join([
             str(self.mean),str(self.sd),str(self.bsd),str(self.pval),str(self.bf),str(self.bh),\
-            str(self.df),str(self.dfb),str(self.uid)
+            str(self.df),str(self.dfb),str(self.refseq)
                 ])
-        sentence="INSERT INTO {0} VALUES('{7}','{1}','{2}','{3}','{4}','{5}',{6},'{8}')".format(
-                    table,self.refid,self.genesym,self.geneid,self.genedecription,self.refseq\
-                            ,nums,sample_name,";".join(self.raw.values())
+        sentence="""INSERT INTO {0} VALUES('{7}','{1}','{2}','{3}','{4}','{5}',{6},X'{8}')""".format(
+                    table,self.refid,self.genesym,filter(str.isalnum, self.geneid),self.uniprot,"N/A",\
+                            nums,self.samplename, zlib.compress(repr(self.raw.items())).encode("hex")
                     );
         cur.execute(sentence);
         return;
-
-    def give_uid(self):
-        return self.uid-1;
-
-    def c(self, another):
-        if (self.mean*another.mean*self.bsd*another.bsd==0):
-            return 0;
-        #print self.bsd,another.bsd
-        return (self.mean-another.mean)/((self.bsd**2+another.bsd**2))**(0.5);
-
     def d(self, another,p=0.05):
         assert self==another;
         assert self.pval==another.pval
         if self.pval  > p:
             return 0 ;
         elif self.mean>another.mean:
-            if "ptpn" in self.genesym.lower():
-                print self.mean, another.mean,self.pval, self.genesym,self.refid
+            print self.genesym
             return 1;
         else:
+            print self.genesym
             return -1;
 
-    def __eq__(self,another):
-        return self.refid==another.refid;
+    def __hash__(self):
+        """simple md5 hash for later set use"""
+        if self.refid=="":
+            raise IOError;
+        return int(md5(self.refid).hexdigest(),16);
 
-    def __hash__(self,s=None):
-        if type(s)==type(None):
-            s=self;
-        ord3 = lambda x : '%.3d' % ord(x)
-        return int(''.join(map(ord3, s.refid)))
+    def __cmp__(self,another):
+        if self.__hash__()==another.__hash__():
+            return 0;
+        elif self.__hash__()<another.__hash__():
+            return -1;
+        else:
+            return 1;
 
 class cybert_sample(object):
     def __init__(self):
         self.name="";
         self.entries=[];
         self.cutoff=2.0;
-        #herer we assume a cutoff for fairly large df
+        return;
+
     def serialize(self,cur,table):
         """serialize all entires"""
         for entry in self.entries:
             entry.serialize(cur,table,self.name);
         return;
-    def __eq__(self,another):
-        return self.name==another.name;
+
+    def __hash__(self):
+        """simple md5 hash for later set use"""
+        return int(md5(self.name).hexdigest(),16);
+
+    def __cmp__(self,another):
+        if self.__hash__()==another.__hash__():
+            return 0;
+        elif self.__hash__()<another.__hash__():
+            return -1;
+        else:
+            return 1;
+
     def give_entries(self):
         for entry in self.entries:
             yield entry;
-    def uids (self):
-        for entry in self.entries:
-            yield entry.uid;
-    def refs (self):
-        for entry in self.entries:
-            yield entry.refid;
-    #def uid_by_cutoff(self, another,cutoff=2.0):
-        #"""filter entries by cutoff, output is uid"""
-        #for entry in self.entries:
-            #if self==another:
-                #yield entry.uid;
-                ##avoid self filtering
-            #elif entry.c(another.entries[entry.give_uid()])>cutoff:
-                #yield entry.uid;
 
     def entry_by_cutoff(self, another,cutoff=5e-2):
         """filter entries by cutoff, output is uid"""
@@ -112,6 +102,7 @@ class cybert_sample(object):
                 #avoid self filtering
             elif entry.d(another.entries[entry.give_uid()],cutoff)==1:
                 yield entry;
+
     def entry_by_cutoff_lo(self, another,cutoff=5e-2):
         """filter entries by cutoff, output is uid"""
         for entry in self.entries:
@@ -129,6 +120,7 @@ class cybert_sample(object):
             else:
                 continue;
         return
+
     def entry_by_genesym2(self,keys):
         out=[];
         for i in self.entries:
@@ -138,6 +130,7 @@ class cybert_sample(object):
                 else:
                     continue;
         return out;
+
     def ref_by_cutoff(self, another,cutoff=5e-2):
         """filter entries by cutoff, output is uid"""
         for entry in self.entries:
@@ -146,6 +139,7 @@ class cybert_sample(object):
                 #avoid self filtering
             elif entry.d(another.entries[entry.give_uid()],cutoff)==1:
                 yield entry.refid;
+
     def ref_by_cutoff_lo(self, another,cutoff=5e-2):
         """filter entries by cutoff, output is uid"""
         for entry in self.entries:
@@ -154,11 +148,13 @@ class cybert_sample(object):
                 #avoid self filtering
             elif entry.d(another.entries[entry.give_uid()],cutoff)==-1:
                 yield entry.refid;
+
     def entry_by_uid(self, uid):
         """yield entry by uid (number), used to connect to filtered-data"""
         for entry in self.entries:
             if entry.uid==uid:
                 return entry;
+
     def entry_by_refid(self,refid):
         """yield entry for refid"""
         for entry in self.entries:
@@ -170,91 +166,62 @@ class cybert_collection(object):
         self.samples=[];
         self.name="";
         self._samples=None;
-    def load_gene_syms(self):
-        g1=open("./probeid/IlluminaProbeLookup.pkl","rb");
-        DB=pickle.load(g1);
-        for sam in self.samples:
-            for en in sam.entries:
-                try:
-                    en.genesym=DB[en.refid.upper()]["Symbol"];
-                    en.refseq=DB[en.refid.upper()]["RefSeq_ID"];
-                except KeyError:
-                    print "a probe was not found to have gene symbol..."
-                    en.genesym="";
-                    en.refseq="";
-        return;
-                    
+
     def load (self,fname):
         self.name=fname.split('/')[-1].split('.')[0];
+        print "loading table", self.name
         f1=open(fname,'r');
         line=f1.readline();
         labels=[i.strip("\"").lower() for i in line.split() if i];
         print labels;
         lookup={};
-        num_sam=len([i for i in labels if "mean" in i]);
-        if self._samples!=None:
-            assert len(self._samples)==num_sam;
-        print "Number of samples (pairwise)", num_sam
-        if num_sam >2:
+        num_sam=len([i for i in labels if "meanc" in i or "meane" in i]);
+        if num_sam !=2:
             print "use multisample version please"
             raise IndexError;
+        if self._samples==None:
+            self._samples=["WT","EXP"];
+        print "Number of samples (pairwise)", num_sam
         for i in xrange(len(labels)):
             lookup[labels[i]]=i;
-        mean_idx=[labels.index(i) for i in labels if "mean" in i];
+        mean_idx=[labels.index(i) for i in labels if "meanc" == i or "meane" == i];
         sd_idx=[labels.index(i) for i in labels if "rasd" in i];
         bsd_idx=[labels.index(i) for i in labels if "bayessd" in i];
+        df_idx=[labels.index(i) for i in labels if "nc" == i or "ne" == i];
         print mean_idx, sd_idx, bsd_idx;
-        at=1;
-        for i in xrange(num_sam):
-            self.samples+=copy.deepcopy([cybert_sample()]);
-            if self._samples==None:
-                self._samples=["WT","KO"];
-            self.samples[i].name=self._samples[i];
+        for name in self._samples:
+            sam=cybert_sample()
+            sam.name=name;
+            self.samples.append(sam)
         for line in f1:
-            toget=[i.strip().lower() for i in line.split() if i!=""];
-            temp=cybert_entry();
-            for i in xrange(len(labels)):
-                temp.raw[labels[i]]=toget[i];
-            temp.uid=at;
-            temp.refid=toget[lookup["lab_0"]].strip("\"");
-            #temp.genedescription=toget[gt_idx];
-            temp.bf=float(toget[lookup["bonferroni"]]);
-            temp.bh=float(toget[lookup["bh"]]);
-            #temp.df=toget["df"];
-            temp.dfb=float(toget[lookup["bayesdf"]]);
-            temp.pval=float(toget[lookup["pval"]]);
-            means=[];
-            sds=[];
-            bsds=[];
-            for i in xrange(num_sam):
-                self.samples[i].entries+=copy.deepcopy([temp]);
-                try:
-                    means.append((float(toget[mean_idx[i]])));
-                except ValueError:
-                    print "error parsing",toget[mean_idx[i]];
-                    means.append(0);
-                try:
-                    sds.append((float(toget[sd_idx[i]])));
-                except ValueError:
-                    print "error parsing",toget[sd_idx[i]];
-                    sds.append(0);
-                try:
-                    bsds.append((float(toget[bsd_idx[i]])));
-                except ValueError:
-                    print "error parsing",toget[bsd_idx[i]];
-                    bsds.append(0);
-            #print means
-            for i in xrange(num_sam): 
-                self.samples[i].entries[-1].mean=means[i];
-                self.samples[i].entries[-1].sd=sds[i];
-                self.samples[i].entries[-1].bsd=bsds[i];
-            at+=1;
+            for num in xrange(num_sam):
+                sam=self.samples[num]
+                toget=[i.strip().lower() for i in line.split("\t")];
+                temp=cybert_entry();
+                temp.refid=toget[0];
+                temp.geneid=toget[2];
+                temp.uniprot=toget[3].upper();temp.genesym=toget[1];
+                temp.samplename=sam.name;
+                temp.bf=float(toget[lookup["bonferroni"]]);
+                temp.bh=float(toget[lookup["bh"]]);
+                temp.dfb=int(toget[lookup["bayesdf"]]);
+                temp.pval=float(toget[lookup["pval"]]);
+                temp.df=int(toget[df_idx[num]])
+                temp.mean=float(toget[mean_idx[num]])
+                temp.sd=float(toget[sd_idx[num]])
+                temp.bsd=float(toget[bsd_idx[num]])
+                temp.refseq=int(md5(temp.refid+sam.name).hexdigest(),16);
+                for i in xrange(len(labels)):
+                    temp.raw[labels[i]]=toget[i];
+                sam.entries.append(temp)
+        self.samples[0].entries=sorted(self.samples[0].entries)
+        self.samples[1].entries=sorted(self.samples[1].entries)
         self.printinfo();
 
     def serialize(self):
         """serialize into database"""
         con=sql.connect(DBPATH);
-        
+
         with con:
             cur=con.cursor();
             cur.execute("DROP TABLE IF EXISTS {0}".format(self.name))
@@ -280,15 +247,6 @@ class cybert_collection(object):
                 out=out&set(sample.entry_by_cutoff(pair,p));
         return out;
 
-    def find_differential_refids(self,sample,lo=False,p=0.05):
-        """gives differential entries that are different from the input"""
-        out=set(sample.refs());
-        for pair in self.samples:
-            if lo:
-                out=out&set(sample.ref_by_cutoff_lo(pair,p));
-            else:
-                out=out&set(sample.ref_by_cutoff(pair,p));
-        return out;
 
     def savedb(self):
         print self.name
@@ -296,22 +254,12 @@ class cybert_collection(object):
         pickle.dump(self.samples,f);
         f.close();
         return;
+
     def loaddb(self,fname="cybert.db"):
         f=open(fname,"rb");
         self.samples=pickle.load(f);
         return self.samples;
-    def mergedb(self, fname, samples=None):
-        """merge a preloaded db to do more work"""
-        f=gzip.open(fname,"rb");
-        temp=pickle.load(f);
-        if samples!=None:
-            assert len(temp)==len(samples);
-            for i in xrange(len(temp)):
-                temp[i].name=samples[i];
-        if self.samples!=[]:
-            assert len(self.samples[0].entries)!=len(temp[0].entries)
-        self.samples+=temp;
-        return temp;
+
     def export_all_cybert_mean_bsds(self):
         """this is just a method to export a complete lookup table for all
         expression data"""
@@ -338,6 +286,7 @@ class cybert_collection(object):
         g.close();
         h.close();
         return
+
     def plotpvals(self):
         p=[];
         ppde=[];
@@ -417,7 +366,7 @@ def sirt1():
     #pvals(out2,"./csv/OE+KO-NOWT.csv")
     pvals(out3,"./csv/OE+{0:.3f}.csv".format(p))
     pvals(out4,"./csv/KO-{0:.3f}.csv".format(p))
-    
+
     pvals(out1,"./csv/KO+{0:.3f}.csv".format(p))
     pvals(out2,"./csv/OE-{0:.3f}.csv".format(p))
     #pvals(out3,"./csv/OE-KO+.csv")
@@ -475,7 +424,7 @@ def main():
     #c=cybert_collection();
     #sirt1()
 #    f=filtered_collection()
-#    f.load("GSE3142_highly_expressed_by_uniref.txt") 
+#    f.load("GSE3142_highly_expressed_by_uniref.txt")
 #    f.savedb();
     #f.loaddb();
 #    print f.entries

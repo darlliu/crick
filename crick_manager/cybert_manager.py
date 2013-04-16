@@ -3,8 +3,6 @@
 import copy
 import os
 import cPickle as pickle
-import numpy as np
-import matplotlib.pyplot as plt
 import sqlite3 as sql
 import subprocess
 import crick.utils.parsers.data_table as dtable
@@ -24,7 +22,7 @@ class cybert_manager(object):
     manages multiple pairwise comparison with ease,
     currently not for a single multi conditional comparison"""
     def __init__ (self, basedir=CURDIR):
-        self.col=cybert_collection();
+        self.cols=[]
         self.run_name=basedir.split('/')[-1];
         tempfiles=os.listdir("./")
         run=False
@@ -199,18 +197,32 @@ class cybert_manager(object):
                 print "purging large files with prefix",myprefix
                 os.remove(myprefix)
                 os.remove(myprefix+"cybert.out")
-
             os.chdir(CURDIR)
 
     def make_collections(self,pfx="CD271"):
         """load the output file and make them into cybert_collection objects for later use"""
-        pass;
+        try:
+            os.chdir("./CyberT_Output")
+        except:
+            print "Please run the cybert output routines first!"
+            raise OSError
+        for fname in os.listdir("./"):
+            col=cybert_collection()
+            col.load(fname)
+            self.cols.append(col)
+        return
+
+
     def serialize(self):
         """serialize all cyber-t collections into databases"""
+        for col in self.cols:
+            print "Now serializing", col.name
+            col.serialize()
+            col.savedb()
+        return
 
 def main():
     c=cybert_manager()
-    c.write_output()
 
 
 if __name__=="__main__":
