@@ -1,0 +1,37 @@
+<html>
+<head>
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+google.load("visualization", "1", {});
+google.load("prototype", "1.6");
+</script>
+
+<script type="text/javascript" 
+src="http://systemsbiology-visualizations.googlecode.com/svn/trunk/src/main/js/load.js"></script>
+<script type="text/javascript">
+systemsbiology.load("visualization", "1.0", {packages:["bioheatmap"]});
+</script>
+
+<script type="text/javascript">
+
+
+
+google.setOnLoadCallback(drawHeatMap);
+function drawHeatMap() {
+    var data = new google.visualization.DataTable();
+    $cols
+    data.addRows($rowcounts);
+    $rows
+
+    heatmap = new
+    org.systemsbiology.visualization.BioHeatMap(document.getElementById('heatmapContainer$which'));
+    heatmap.draw(data, {mapWidth:800});
+}
+
+</script>
+</head>
+
+<body>
+<div id="heatmapContainer"></div>
+</body>
+</html>

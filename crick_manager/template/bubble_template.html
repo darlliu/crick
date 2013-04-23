@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            $table_head
+            $table_content
+        ]);
+
+        var options = {
+          title: $plot_title,
+          hAxis: {title: $plot_x_label},
+          vAxis: {title: $plot_y_label},
+          bubble: {textStyle: {fontSize: 11}},
+          chartArea: {width:1200,height:900},
+          sizeAxis: {maxSize:35, minSize:17}
+        };
+
+        var chart = new 
+        google.visualization.BubbleChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 1500px; height: 1200px;"></div>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<html>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>List Summary of $title</title>
+<link rel="stylesheet" 
+href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
+<style type="text/css">
+body {
+    padding-top: 60px;
+}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript">
+google.load("visualization", "1", {});
+google.load("prototype", "1.6");
+</script>
+
+<script type="text/javascript" 
+src="http://systemsbiology-visualizations.googlecode.com/svn/trunk/src/main/js/load.js"></script>
+<script type="text/javascript">
+systemsbiology.load("visualization", "1.0", {packages:["bioheatmap"]});
+</script>
+<script type="text/javascrip" src="heatmap.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+    <h1> $title Summary. </h1>
+    <a href="enrichment-report.html"><h2>Go to enrichment report (large)</h2></a>
+    <div class="container">
+        <h3> Click on links to go to line plots</h3>
+        <table class="table">
+            $menu_header
+            $menu_content
+        </table>
+    </div>
+    <div class="container">
+        <h2> $title Detail Table. </h2>
+        <a src="tables.html">
+            <h3> Click to go to detailed table with all relevant data</h3>
+        </a>
+    </div>
+    <div class="container">
+        <h2> $title Heatmap. </h2>
+        <h3> Color corresponds to significance of change up or down.</h3>
+        <div id="heatmapContainer1"></div>
+    </div>
+    <div class="container">
+        <h2> $title Heatmap. </h2>
+        <h3> Color corresponds to fold change up or down.</h3>
+        <div id="heatmapContainer2"></div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
