@@ -10,12 +10,12 @@ DBPATH="/home/yul13/data/databases/cybert.db"
 LABELS="(Sample TEXT, ProbeID INT, GeneSym TEXT, GeneDescription TEXT,GeneID TEXT, ReferenceID TEXT,\
         Mean REAL, SD REAL, BayesSD REAL, pValDifferential REAL, Bonferonni REAL, BH REAL, DF INT,\
         BayesDF INT, UID INT, RawINFO BLOB)";
-BASEDIR="/home/yul13/data/template/"
+BASEDIR="/home/yul13/mycodes/crick/crick_manager/template/"
 CURDIR=os.getcwd();
 from cybert_slaves import *
 VERBOSE=0
 ARGS={"FNAME":"","CONTROL":"-1","EXPERIMENT":"-1", "BACKGROUND":"8", "WINDOWSIZE":"101",\
-        "INTC":"T","INTE":"T","DOMULT":"T","PPDE":"F","DOQC":"F"}
+        "ISLOG":"T",  "INTC":"T","INTE":"T","DOMULT":"T","PPDE":"F","DOQC":"F"}
 
 class cybert_manager(object):
     """cybert t run and result manager,
@@ -110,7 +110,7 @@ class cybert_manager(object):
         g.close()
         return;
 
-    def write_runs(self):
+    def write_runs(self,paired=None):
         for i in xrange(len(self.RUNNAMES)):
             RUNNAME=self.RUNNAMES[i]
             self.order=self.ORDER[i]
@@ -121,7 +121,10 @@ class cybert_manager(object):
                 pass;
             os.chdir(RUNNAME)
             #now assemble args to insert into template
-            template=open(BASEDIR+"cybert_template.R","r").read();
+            if paired:
+                template=open(BASEDIR+"cybert_paired_template.R","r").read();
+            else:
+                template=open(BASEDIR+"cybert_template.R","r").read();
             jobtemplate=open(BASEDIR+"submit.sge","r").read();
             bashtemp="#!/bin/bash \n"
             for i in xrange(self.runs+1):
